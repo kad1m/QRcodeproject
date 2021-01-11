@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Welcome
+{% endblock %}
+{% block content %}
+    <!-- WELCOME
+================================================== -->
+    <section class="section section_welcome" data-parallax="scroll"
+             data-image-src="https://source.unsplash.com/5AMSZcgN_cM/1920x1080">
+
+        <!-- Content -->
+        <div class="section_welcome__main">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+
+                        <!-- Heading -->
+                        <h2 class="section__preheading section_welcome__preheading text-center text-muted">
+                            <span class="text-primary">Café</span> / Restaurant
+                        </h2>
+                        <h1 class="section__heading section_welcome__heading text-center">
+                            QR code menu
+                        </h1>
+                        <p class="section__subheading section_welcome__subheading text-center text-muted">
+                            If you are the owner of a catering establishment, you can create a menu for your
+                            establishment, which will be stored in the cloud and will be available by QR code
+                        </p>
+                        {% if user.is_authenticated %}
+                            <div class="text-center">
+                                <a href="{% url 'category' %}" class="btn btn-primary text-white">
+                                    Add menu
+                                </a>
+                            </div>
+
+                        {% else %}
+                            <div class="text-center">
+                                <a href="{% url 'sign_up' %}" class="btn btn-primary text-white">
+                                    Get Start
+                                </a>
+                            </div>
+                        {% endif %}
+                        <!-- Button -->
+
+
+                    </div>
+                </div> <!-- / .row -->
+            </div> <!-- / .container -->
+        </div>
+
+        <!-- Footer -->
+        <div class="section_welcome__footer">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md">
+
+                        <!-- Social links -->
+                        <ul class="section_welcome__footer__social text-center text-lg-left">
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="col-md">
+
+                        <!-- Address -->
+                        <div class="section_welcome__footer__address text-center text-lg-right">
+                            <i class="fas fa-map-marker-alt"></i> 1234 Altschul, New York, NY 10027-0000
+                        </div>
+
+                    </div>
+                </div> <!-- / .row -->
+            </div> <!-- / .container -->
+        </div>
+
+    </section>
+{% endblock %}
+

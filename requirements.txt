@@ -1,0 +1,15 @@
+asgiref==3.3.1
+certifi==2020.12.5
+chardet==4.0.0
+dj-stripe==2.4.1
+Django==3.1.4
+idna==2.10
+jsonfield==3.1.0
+Pillow==8.0.1
+pytz==2020.4
+qrcode==6.1
+requests==2.25.1
+six==1.15.0
+sqlparse==0.4.1
+stripe==2.55.1
+urllib3==1.26.2
