@@ -18,6 +18,8 @@ class Customer(models.Model):
     def __str__(self):
         return str(self.company_name)
 
+    def get_absolute_url(self):
+        return reverse('second_page', kwargs={'id': self.id})
 
 class CafeMenu(models.Model):
     name = models.CharField(max_length=255)

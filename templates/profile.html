@@ -4,7 +4,8 @@
     Profile user: {{ user.username }}
 {% endblock %}
 {% block content %}
-    <section class="section section_header" data-parallax="scroll" data-image-src="https://source.unsplash.com/5AMSZcgN_cM/1920x1080">
+    <section class="section section_header" data-parallax="scroll"
+             data-image-src="https://source.unsplash.com/5AMSZcgN_cM/1920x1080">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -18,59 +19,184 @@
             </div> <!-- / .row -->
         </div> <!-- / .container -->
     </section>
-    {% if subscription.status == "active" %}
-        <h4>Your subscription:</h4>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">
-                    {{ product.description }}<br>
-                    {{ subscription_end }}
-                </p>
-            </div>
-        </div>
-        <a href="{% url 'cancel_subscription' %}">Cancel subscription</a>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Your menu</h5>
-                <p class="card-text">
-                    Look your menu<br>
 
-                </p>
-                <a class="dropdown-item" href="{% url 'product' %}"><i class="fas fa-coffee"></i> Menu</a>
-            </div>
-        </div>
-    {% else %}
-        <div class="container">
-            <div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card " style="margin-top: 20px; margin-bottom: 20px">
+                    <div class="row no-gutters">
 
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Free plan</h5>
-                            <p class="card-text">
-                                In free plan u can create, see your menu but people can`t looking your menu<br>
+                        {% if subscription.status == "active" %}
+                            {% if customer.qr_code %}
+                                <img src="{{ customer.qr_code.url }}" class="card-img" alt="...">
 
-                            </p>
-                            <a href="{% url 'home' %}" class="btn btn-primary">Change plan ➔</a>
-                        </div>
+
+                                <div class="d-grid gap-2 mx-auto">
+                                    <a href="{% url 'download' %}">
+                                        <button class="btn btn-primary " style="margin-bottom: 10px;">
+                                            Download <i class="fas fa-download"></i>
+                                        </button>
+                                    </a>
+                                </div>
+
+
+                            {% else %}
+                                <a href="{% url 'create_qr' %}"> Create QR code </a>
+                            {% endif %}
+                            <div class="">
+                                <div class="card-body">
+                                    <h5 class="card-title">Welcome</h5>
+                                    <p class="card-text">Thank you for being with us.</p>
+                                    <p class="card-text">Your next payment will be {{ subscription_end }}</p>
+                                    <p class="card-text">
+
+                                    <center>
+                                        <a class="btn btn-danger" style="font-size: 0.6em; margin-bottom: 10px;"
+                                           data-toggle="modal" data-target="#exampleModal"
+                                           href="">Cancel subscription</a>
+                                        <a href="{% url 'category' %}" style="font-size: 0.6em; margin-bottom: 10px;"
+                                           class="btn btn-primary">Edit menu</a>
+                                    </center>
+
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Free plan</h5>
+                                    <p class="card-text">Using a free plan, you can only create a menu and see how it
+                                        will look in the end.
+                                    </p>
+                                    <p class="card-text">
+                                        Upgrade your plan to get the code and open your menu to visitors.
+                                    </p>
+                                    <p class="card-text">
+                                    <p class="card-text"><small class="text-muted">
+                                    <a href="{% url 'home' %}" class="btn btn-primary">Upgrade plan</a></small></p>
+                                    </p>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
+                </div>
+            </div>
+            <div class="col-md-8">
 
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Your menu</h5>
-                            <p class="card-text">
-                                Look your menu<br>
+                <section class="section section_menu section_border_bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
 
-                            </p>
-                            <a class="btn btn-primary" href="{% url 'product' %}"><i class="fas fa-coffee"></i> Menu</a>
+                                <!-- Heading -->
+                                <h2 class="section__heading text-center">
+                                    Menu preview
+                                </h2>
+
+                            </div>
+                        </div> <!-- / .row -->
+                        <div class="row">
+                            <div class="col">
+
+                                <!-- Navigation -->
+                                <nav class="section_menu__nav">
+                                    <ul>
+                                        {% for category in categories %}
+
+                                            <li class="{% if categories|first == category %}
+                            active
+                            {% endif %} ">
+                                                <a href="#menu_images"
+                                                   data-filter=".{{ category.id }}">{{ category.name }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+
+                            </div>
                         </div>
-                    </div>
+                        <div class="row section_menu__grid" id="menu_images">
+                            {% for product in products %}
+                                <div class="col-md-6 section_menu__grid__item {{ product.category.id }}">
+                                    <div class="section_menu__item">
+                                        <div class="row">
+                                            <div class="col-3 align-self-center">
+                                                <div class="section_menu__item__img">
+                                                    {% if product.product_image %}
+                                                        <img src="{{ product.product_image.url }}" alt="...">
+                                                    {% else %}
+                                                        <img src="{% static 'assets/img/26.jpg' %}" alt="...">
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-7">
+                                                <h4>{{ product.name }} </h4>
+                                                <p>
+                                                    {{ product.description }}
+                                                </p>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="section_menu__item__price text-center">
+                                                    ${{ product.price }}
+                                                </div>
+                                            </div>
+                                        </div> <!-- / .row -->
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        </div> <!-- / .row -->
+                    </div> <!-- / .container -->
+                </section>
 
             </div>
+
         </div>
+    </div>
 
-    {% endif %}
 
 
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirm cancel subscription</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    By unsubscribing your customers cannot use the menu. <br>
+                    Money will not be refunded <br>
+                    When you make a new subscription, you will have to pay again according to the selected plan
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="{% url 'cancel_subscription' %}">
+                        <button type="button" class="btn btn-danger">Cancel subscription</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

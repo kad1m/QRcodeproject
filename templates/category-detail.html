@@ -44,36 +44,9 @@
                                 </div>
                             </div>
                             <div class="col-7">
-                                <h4><a href="{% url 'edit_product' foo.id %}"><i class="fas fa-edit"></i></a>  <a
-                                            href="" data-toggle="modal"
-                                            data-target="#exampleModal"><i
-                                            class="fas fa-trash"></i></a> {{ foo.name }} </h4>
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                        Delete {{ product.name }}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Confirm delete product: {{ foo.name }}?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close
-                                                    </button>
-                                                    <a href="{% url 'delete_product' foo.id %}">
-                                                        <button type="button" class="btn btn-primary">Delete</button>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <h4><a href="{% url 'edit_product' foo.id %}"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'delete_product' foo.id %}"><i class="fas fa-trash"></i></a> {{ foo.name }} </h4>
+                                    
                                 <p>
                                     {{ foo.description }}
                                 </p>

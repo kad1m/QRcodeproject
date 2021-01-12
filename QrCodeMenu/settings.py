@@ -26,7 +26,7 @@ SECRET_KEY = 'le98v%gp(*z$0_!xag-$^zui*k_7&1_6ma^(e2hc$2kb**_lwb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -117,13 +117,15 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_DIR = os.path.join(BASE_DIR, 'static')
-#STATICFILES_DIRS = [STATIC_DIR]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+if DEBUG:
+    STATIC_DIR = os.path.join(BASE_DIR, 'static')
+    STATICFILES_DIRS = [STATIC_DIR]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 STRIPE_PUBLISHABLE_KEY = ''
 STRIPE_SECRET_KEY = ''

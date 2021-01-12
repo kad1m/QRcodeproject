@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
 from django.views.generic import View
 import stripe
 from django.http import JsonResponse, FileResponse
@@ -16,7 +17,7 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
-
+from stripe import webhook
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
@@ -51,23 +52,30 @@ class Register(View):
             return render(request, 'registration/sign_up.html', context)
 
 
+def createQRcode(request):
+    object = get_object_or_404(Customer, user=request.user)
+    link2 = settings.ALLOWED_HOSTS[0] + object.get_absolute_url()
+    qrcode_image = qrcode.make(link2)
+    canvas = Image.new('RGB', (qrcode_image.pixel_size, qrcode_image.pixel_size), 'white')
+    draw = ImageDraw.Draw(canvas)
+    canvas.paste(qrcode_image)
+    fname = f'qr_code-{link2}.png'
+    buffer = BytesIO()
+    canvas.save(buffer, 'PNG')
+    object.qr_code.save(fname, File(buffer))
+    canvas.close()
+    return redirect('profile')
+
+
 class SecondPage(View):
+
     def get(self, request, *args, **kwargs):
         object = get_object_or_404(Customer, id=kwargs['id'])
-        link2 = request.build_absolute_uri()
-        qrcode_image = qrcode.make(link2)
-        canvas = Image.new('RGB', (qrcode_image.pixel_size, qrcode_image.pixel_size), 'white')
-        draw = ImageDraw.Draw(canvas)
-        canvas.paste(qrcode_image)
-        fname = f'qr_code-{link2}.png'
-        buffer = BytesIO()
-        canvas.save(buffer, 'PNG')
-        object.qr_code.save(fname, File(buffer))
-        canvas.close()
+
         try:
             subscription = stripe.Subscription.retrieve(object.stripeSubscriptionId)
         except:
-            return HttpResponse('oops')
+            return render(request, 'oops.html')
         if subscription.status == 'active':
             products = Product.objects.filter(owner=object)
             categories = Category.objects.filter(owner=object)
@@ -264,26 +272,37 @@ class MenuView(View):
 def profile(request):
     try:
         # Retrieve the subscription & product
-        stripe_customer = Customer.objects.get(user=request.user)
+        customer = Customer.objects.get(user=request.user)
 
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+        subscription = stripe.Subscription.retrieve(customer.stripeSubscriptionId)
 
         product = stripe.Product.retrieve(subscription.plan.product)
+        products = Product.objects.filter(owner=customer)
+        categories = Category.objects.filter(owner=customer)
 
         # Feel free to fetch any additional data from 'subscription' or 'product'
         # https://stripe.com/docs/api/subscriptions/object
         # https://stripe.com/docs/api/products/object
-
         return render(request, 'profile.html', {
             'subscription': subscription,
-            'product': product,
-            'subscription_end': datetime.fromtimestamp(subscription.current_period_end)
+            'plan': product,
+            'subscription_end': datetime.fromtimestamp(subscription.current_period_end),
+            'customer': customer,
+            'products': products,
+            'categories': categories,
         })
 
     except:
         stripe_customer = Customer.objects.get(user=request.user)
-        return render(request, 'profile.html', {'customer': stripe_customer})
+        products = Product.objects.filter(owner=customer)
+        categories = Category.objects.filter(owner=customer)
+        context = {
+            'customer': stripe_customer,
+            'products': products,
+            'categories': categories
+        }
+        return render(request, 'profile.html', context)
 
 
 @login_required
@@ -322,7 +341,7 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'http://localhost:8000/'
+        domain_url = settings.ALLOWED_HOSTS[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -347,7 +366,7 @@ def create_checkout_session(request):
 @csrf_exempt
 def create_checkout_session1(request):
     if request.method == 'GET':
-        domain_url = 'http://localhost:8000/'
+        domain_url = settings.ALLOWED_HOSTS[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -370,6 +389,17 @@ def create_checkout_session1(request):
 
 @login_required
 def success(request):
+    object = get_object_or_404(Customer, id=request.user.id)
+    link2 = settings.ALLOWED_HOSTS[0] + object.get_absolute_url()
+    qrcode_image = qrcode.make(link2)
+    canvas = Image.new('RGB', (qrcode_image.pixel_size, qrcode_image.pixel_size), 'white')
+    draw = ImageDraw.Draw(canvas)
+    canvas.paste(qrcode_image)
+    fname = f'qr_code-{link2}.png'
+    buffer = BytesIO()
+    canvas.save(buffer, 'PNG')
+    object.qr_code.save(fname, File(buffer))
+    canvas.close()
     return render(request, 'success.html')
 
 
@@ -377,7 +407,7 @@ def success(request):
 def cancel(request):
     return render(request, 'cancel.html')
 
-
+@require_POST
 @csrf_exempt
 def stripe_webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -416,6 +446,7 @@ def stripe_webhook(request):
         print(user.username + ' just subscribed.')
 
     return HttpResponse(status=200)
+
 
 
 @login_required()

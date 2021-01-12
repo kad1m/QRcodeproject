@@ -31,7 +31,7 @@
                                 <li class="{% if categories|first == category %}
                             active
                             {% endif %} ">
-                                    <a href="#menu_images" data-filter=".{{ category.name }}">{{ category.name }}</a>
+                                    <a href="#menu_images" data-filter=".{{ category.id }}">{{ category.name }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -41,7 +41,7 @@
             </div>
             <div class="row section_menu__grid" id="menu_images">
                 {% for product in products %}
-                    <div class="col-md-6 section_menu__grid__item {{ product.category }}">
+                    <div class="col-md-6 section_menu__grid__item {{ product.category.id }}">
                         <div class="section_menu__item">
                             <div class="row">
                                 <div class="col-3 align-self-center">
@@ -72,16 +72,6 @@
             </div> <!-- / .row -->
         </div> <!-- / .container -->
     </section>
-    {% if user.is_authenticated %}
-        <center style="margin-bottom: 20px"><img src="{{ object.qr_code.url }}" alt="">
-            <br>
-            <a href="{% url 'download' %}">
-                <button class="btn btn-primary">Download <i class="fas fa-download"></i></button>
-            </a>
-            <br></center>
-    {% endif %}
-
-
 {% endblock %}
 
 
