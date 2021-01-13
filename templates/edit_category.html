@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}
-    Add category
+{% trans 'Edit category' %}
 {% endblock %}
 {% block content %}
-    <section class="section section_header" data-parallax="scroll" data-image-src="assets/img/25.jpg">
+    <section class="section section_header" data-parallax="scroll" data-image-src="{% if customer.profile_image %}
+    {{ customer.profile_image.url }}
+    {% else %}
+    https://source.unsplash.com/5AMSZcgN_cM/1920x1080
+    {% endif %}">
         <div class="container">
             <div class="row">
                 <div class="col">
 
                     <!-- Heading -->
                     <h1 class="section__heading section_header__heading text-center">
-                        Edit category
+                        {% trans 'Edit category' %}
                     </h1>
 
                 </div>
@@ -19,9 +24,9 @@
     </section>
      <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'category' %}">Category</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit Category</li>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'category' %}">{% trans 'Category' %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{% trans 'Edit category' %}</li>
         </ol>
     </nav>
     <div class="container">
@@ -34,7 +39,7 @@
             <br>
             {{ forms.description }}
             <br>
-            <center><button class="btn btn-primary">Edit category</button></center>
+            <center><button class="btn btn-primary">{% trans 'Save' %}</button></center>
             <br>
         </form>
     </div>

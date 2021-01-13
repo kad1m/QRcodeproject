@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 {% block title %}
-    Profile user: {{ user.username }}
+{% trans 'Profile user' %}: {{ user.username }}
 {% endblock %}
 {% block content %}
     <section class="section section_header" data-parallax="scroll"
-             data-image-src="https://source.unsplash.com/5AMSZcgN_cM/1920x1080">
+             data-image-src="{% if customer.profile_image %}
+    {{ customer.profile_image.url }}
+    {% else %}
+    https://source.unsplash.com/5AMSZcgN_cM/1920x1080
+    {% endif %}">
         <div class="container">
             <div class="row">
                 <div class="col">
 
                     <!-- Heading -->
                     <h1 class="section__heading section_header__heading text-center">
-                        Profile
+                        {% trans 'Profile' %}
                     </h1>
 
                 </div>
@@ -34,28 +38,28 @@
                                 <div class="d-grid gap-2 mx-auto">
                                     <a href="{% url 'download' %}">
                                         <button class="btn btn-primary " style="margin-bottom: 10px;">
-                                            Download <i class="fas fa-download"></i>
+                                            {% trans 'Download' %} <i class="fas fa-download"></i>
                                         </button>
                                     </a>
                                 </div>
 
 
                             {% else %}
-                                <a href="{% url 'create_qr' %}"> Create QR code </a>
+                                <a href="{% url 'create_qr' %}"> {% trans 'Create QR code' %}</a>
                             {% endif %}
                             <div class="">
                                 <div class="card-body">
-                                    <h5 class="card-title">Welcome</h5>
-                                    <p class="card-text">Thank you for being with us.</p>
-                                    <p class="card-text">Your next payment will be {{ subscription_end }}</p>
+                                    <h5 class="card-title">{% trans 'Welcome' %}</h5>
+                                    <p class="card-text">{% trans 'Thank you for being with us.' %}</p>
+                                    <p class="card-text">{% trans 'Your next payment will be' %} {{ subscription_end }}</p>
                                     <p class="card-text">
 
                                     <center>
                                         <a class="btn btn-danger" style="font-size: 0.6em; margin-bottom: 10px;"
                                            data-toggle="modal" data-target="#exampleModal"
-                                           href="">Cancel subscription</a>
+                                           href="">{% trans 'Cancel subscription' %}</a>
                                         <a href="{% url 'category' %}" style="font-size: 0.6em; margin-bottom: 10px;"
-                                           class="btn btn-primary">Edit menu</a>
+                                           class="btn btn-primary">{% trans 'Edit menu' %}</a>
                                     </center>
 
 
@@ -66,16 +70,15 @@
                         {% else %}
                             <div class="h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">Free plan</h5>
-                                    <p class="card-text">Using a free plan, you can only create a menu and see how it
-                                        will look in the end.
+                                    <h5 class="card-title">{% trans 'Free plan' %}</h5>
+                                    <p class="card-text">{% trans 'Using a free plan, you can only create a menu and see how it will look in the end.' %}
                                     </p>
                                     <p class="card-text">
-                                        Upgrade your plan to get the code and open your menu to visitors.
+                                        {% trans 'Upgrade your plan to get the code and open your menu to visitors.' %}
                                     </p>
                                     <p class="card-text">
                                     <p class="card-text"><small class="text-muted">
-                                    <a href="{% url 'home' %}" class="btn btn-primary">Upgrade plan</a></small></p>
+                                    <a href="{% url 'home' %}" class="btn btn-primary">{% trans 'Upgrade plan' %}</a></small></p>
                                     </p>
                                 </div>
                             </div>
@@ -92,7 +95,7 @@
 
                                 <!-- Heading -->
                                 <h2 class="section__heading text-center">
-                                    Menu preview
+                                    {% trans 'Menu preview' %}
                                 </h2>
 
                             </div>
@@ -139,7 +142,7 @@
                                             </div>
                                             <div class="col-2">
                                                 <div class="section_menu__item__price text-center">
-                                                    ${{ product.price }}
+                                                    {{customer.currency_symbol}}{{ product.price }}
                                                 </div>
                                             </div>
                                         </div> <!-- / .row -->

@@ -7,6 +7,14 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
+class Currency(models.Model):
+    name = models.CharField(max_length=255)
+    symbol = models.CharField(max_length=10)
+
+    def __str__(self):
+        return str(self.symbol)
+
+
 class Customer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     company_name = models.CharField(max_length=255)
@@ -14,6 +22,9 @@ class Customer(models.Model):
     menu_pdf = models.FileField(upload_to='menu', blank=True)
     stripeCustomerId = models.CharField(max_length=255, blank=True)
     stripeSubscriptionId = models.CharField(max_length=255, blank=True)
+    profile_image = models.ImageField(upload_to='profile', blank=True)
+    currency_symbol = models.ForeignKey(Currency, on_delete=models.SET_NULL, null=True)
+
 
     def __str__(self):
         return str(self.company_name)

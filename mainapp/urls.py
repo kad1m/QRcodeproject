@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import Index, SecondPage, AddCategory, createQRcode, DownloadQR, EditProduct, DeleteCategory, DeleteProduct, how_it_work, about_us, contact_us, CategoryView,profile, ProductView, MenuView, AddProduct, EditCategory, CategoryDetail, Register, home, stripe_config, create_checkout_session, cancel_subscription, create_checkout_session1, success, cancel, stripe_webhook
+from .views import Index, SecondPage, AddCategory, EditCustomer, createQRcode, DownloadQR, EditProduct, DeleteCategory, DeleteProduct, how_it_work, about_us, contact_us, CategoryView,profile, ProductView, MenuView, AddProduct, EditCategory, CategoryDetail, Register, home, stripe_config, create_checkout_session, cancel_subscription, create_checkout_session1, success, cancel, stripe_webhook
 
 urlpatterns = [
     path('', Index.as_view(), name='index'),
     path('menu/<int:id>', SecondPage.as_view(), name='second_page'),
     path('profile/', profile, name='profile'),
+    path('edit-profile/', EditCustomer.as_view(), name='edit_profile'),
     path('create-qr/', createQRcode, name='create_qr'),
     path('add-category/', AddCategory.as_view(), name='add_category'),
     path('categories/', CategoryView.as_view(), name='category'),
@@ -21,7 +22,7 @@ urlpatterns = [
     path('config/', stripe_config),
     path('create-checkout-session/', create_checkout_session),
     path('create-checkout-session1/', create_checkout_session1),
-    path('success/', success),  # new
+    path('success', success),  # new
     path('cancel/', cancel),
     path('webhook/', stripe_webhook),
     path('cancel-sub/', cancel_subscription, name='cancel_subscription'),

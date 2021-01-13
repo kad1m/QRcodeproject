@@ -3,6 +3,7 @@ from .models import Website, CafeMenu, Category, Product, Customer
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import ugettext as _
 
 
 class CreateQrCodeForm(forms.ModelForm):
@@ -12,7 +13,7 @@ class CreateQrCodeForm(forms.ModelForm):
         fields = ('name',)
 
     name = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-30', 'placeholder': 'Your name', 'name': 'message-name'}))
+        attrs={'class': 'form-control mb-30', 'placeholder': _('Your name'), 'name': 'message-name'}))
 
 
 class CreateQrCodeForMenuForm(forms.ModelForm):
@@ -32,9 +33,9 @@ class CategoryForm(forms.ModelForm):
         fields = ('name', 'description')
 
     name = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-30', 'placeholder': 'Category name', 'name': 'message-name'}))
+        attrs={'class': 'form-control mb-30', 'placeholder': _('Category name'), 'name': 'message-name'}))
     description = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-30', 'placeholder': 'Description', 'name': 'message-name'}))
+        attrs={'class': 'form-control mb-30', 'placeholder': _('Description'), 'name': 'message-name'}))
 
 
 class ProductForm(forms.ModelForm):
@@ -44,13 +45,13 @@ class ProductForm(forms.ModelForm):
         fields = ('name', 'price', 'description', 'product_image')
 
     name = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-30', 'placeholder': 'Product name', 'name': 'message-name'}))
+        attrs={'class': 'form-control mb-30', 'placeholder': _('Product name'), 'name': 'message-name'}))
 
     price = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-30', 'placeholder': 'Price', 'name': 'message-name'}))
+        attrs={'class': 'form-control mb-30', 'placeholder': _('Price'), 'name': 'message-name'}))
 
     description = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-30', 'placeholder': 'Description', 'name': 'message-name'}))
+        attrs={'class': 'form-control mb-30', 'placeholder': _('Description'), 'name': 'message-name'}))
 
 
 class UserLoginForm(AuthenticationForm):
@@ -58,11 +59,11 @@ class UserLoginForm(AuthenticationForm):
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'Username', 'id': 'hello'}))
+        attrs={'class': 'form-control', 'placeholder': _('Username'), 'id': 'hello'}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
-            'placeholder': 'Password',
+            'placeholder': _('Password'),
             'id': 'hi',
         }
     ))
@@ -74,30 +75,37 @@ class RegisterForm(UserCreationForm):
         fields = ['username', 'password1', 'password2']
 
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'Username', 'id': 'hello'}))
+        attrs={'class': 'form-control', 'placeholder': _('Username'), 'id': 'hello'}), help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'))
     password1 = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
             'placeholder': 'Password',
             'id': 'hi',
         }
-    ))
+    ), help_text=[_('Your password can’t be too similar to your other personal information.'),
+                   _('Your password must contain at least 8 characters.'),
+                   _('Your password can’t be a commonly used password.'),
+                   _('Your password can’t be entirely numeric.')])
     password2 = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
-            'placeholder': 'Confirm password',
+            'placeholder': _('Confirm password'),
             'id': 'hi',
+
         }
-    ))
+    ), help_text=_('Enter the same password as before, for verification.'))
 
 
 class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
-        fields = ['company_name']
+        fields = ['profile_image', 'currency_symbol', 'company_name']
 
-    company_name = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'Company name', 'id': 'hello'}))
+        widgets = {
+            'currency_symbol': forms.Select(attrs={'class': 'form-control'}),
+            'company_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Company name')})
+        }
+
 
 
 

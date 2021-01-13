@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 {% block title %}
-
+    {{ category.name }}
 {% endblock %}
 {% block content %}
-    <section class="section section_header" data-parallax="scroll" data-image-src="assets/img/25.jpg">
+    <section class="section section_header" data-parallax="scroll" data-image-src="{% if customer.profile_image %}
+    {{ customer.profile_image.url }}
+    {% else %}
+    https://source.unsplash.com/5AMSZcgN_cM/1920x1080
+    {% endif %}">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -20,12 +24,13 @@
     </section>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'category' %}">Category</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'category' %}">{% trans 'Category'%}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
         </ol>
     </nav>
-    <center><a href="{% url 'add_product' category.id %}" class="btn btn-primary" style="margin-top: 20px">add product</a></center><br>
+    <center><a href="{% url 'add_product' category.id %}" class="btn btn-primary" style="margin-top: 20px">
+        {% trans 'Add product' %}</a></center><br>
     <div class="container">
         <div class="row section_menu__grid" id="menu_images" style="margin-bottom: 20px">
 
@@ -37,16 +42,16 @@
                             <div class="col-3 align-self-center">
                                 <div class="section_menu__item__img">
                                     {% if foo.product_image %}
-                                        <img src="{{foo.product_image.url}}" alt="...">
+                                        <img src="{{ foo.product_image.url }}" alt="...">
                                     {% else %}
-                                        <img src="{% static 'assets/img/26.jpg'%}" alt="...">
+                                        <img src="{% static 'assets/img/26.jpg' %}" alt="...">
                                     {% endif %}
                                 </div>
                             </div>
                             <div class="col-7">
                                 <h4><a href="{% url 'edit_product' foo.id %}"><i class="fas fa-edit"></i></a>
-                                    <a href="{% url 'delete_product' foo.id %}"><i class="fas fa-trash"></i></a> {{ foo.name }} </h4>
-                                    
+                                    <a href="{% url 'delete_product' foo.id %}"><i
+                                            class="fas fa-trash"></i></a> {{ foo.name }} </h4>
                                 <p>
                                     {{ foo.description }}
                                 </p>

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}
-    You have successfully subscribed!
+    {% trans 'You have cancelled the checkout.' %}
 {% endblock %}
 {% block content %}
     <section class="section section_header" data-parallax="scroll" data-image-src="https://source.unsplash.com/5AMSZcgN_cM/1920x1080">
@@ -11,10 +12,9 @@
                     <!-- Heading -->
                     <h1 class="container h1 text-center" style="color: limegreen"><i class="fas fa-window-close"></i></h1>
                     <h1 class="section__heading section_header__heading text-center">
-                        You have cancelled the checkout.
+                        {% trans 'You have cancelled the checkout.' %}
                     </h1>
-
-                    <p class="mt-5 text-center"><a href="{% url "profile" %}" >Return to the dashboard</a></p>
+                    <p class="mt-5 text-center"><a href="{% url "profile" %}" >{% trans 'Return to the dashboard' %}</a></p>
 
                 </div>
             </div> <!-- / .row -->

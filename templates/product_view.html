@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 {% block title %}
-    Category of {{ request.user.username }}
+    {% trans 'Category of' %} {{ request.user.username }}
 {% endblock %}
 {% block content %}
     <section class="section section_header" data-parallax="scroll" data-image-src="assets/img/25.jpg">
@@ -10,7 +10,7 @@
                 <div class="col">
                     <!-- Heading -->
                     <h1 class="section__heading section_header__heading text-center">
-                        Menu:
+                        {% trans 'Menu' %}:
                     </h1>
                 </div>
             </div> <!-- / .row -->
@@ -18,9 +18,9 @@
     </section>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'category' %}">Category</a></li>
-            <li class="breadcrumb-item active">Menu preview</li>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'category' %}">{% trans 'Category' %}</a></li>
+            <li class="breadcrumb-item active">{% trans 'Menu preview' %}</li>
         </ol>
     </nav>
     <section class="section section_menu section_border_bottom">
@@ -30,11 +30,10 @@
 
                     <!-- Heading -->
                     <h2 class="section__heading text-center">
-                        Browse by categories
+                        {% trans 'Browse by categories' %}
                     </h2>
                     <p class="section__subheading text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Ratione numquam eos perferendis itaque hic unde, ad, laudantium minima.
+                        {% trans 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione numquam eos perferendis itaque hic unde, ad, laudantium minima.' %}
                     </p>
 
                 </div>
@@ -80,7 +79,7 @@
 							</div>
 							<div class="col-2">
 								<div class="section_menu__item__price text-center">
-									${{ product.price }}
+									{{ customer.currency_symbol }}{{ product.price }}
 								</div>
 							</div>
 						</div> <!-- / .row -->

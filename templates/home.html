@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}
-    Payments
+    {% trans 'Payments' %}
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@
 
                     <!-- Heading -->
                     <h1 class="section__heading section_header__heading text-center">
-                        Pricing
+                        {% trans 'Pricing' %}
                     </h1>
 
                 </div>
@@ -26,7 +26,7 @@
     <main class="container">
 
         {% if subscription.status == "active" %}
-            <h4>Your subscription:</h4>
+            <h4>{% trans 'Your subscription' %}:</h4>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
@@ -36,7 +36,7 @@
                     </p>
                 </div>
             </div>
-            <a href="{% url 'cancel_subscription' %}">Cancel subscription</a>
+            <a href="{% url 'cancel_subscription' %}">{% trans 'Cancel subscription' %}</a>
         {% else %}
             <div class="row row-cols-1 row-cols-md-2 mb-2 text-center" style="margin-top: 20px;">
 
@@ -44,7 +44,7 @@
                 <div class="col">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
-                            <h4 class="my-0 fw-normal">Monthly</h4>
+                            <h4 class="my-0 fw-normal">{% trans 'Monthly' %}</h4>
                         </div>
                         <div class="card-body">
                             <h1 class="card-title pricing-card-title">$9,99</h1>
@@ -54,7 +54,7 @@
                                 <li>Priority email support</li>
                                 <li>Help center access</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-primary" id="submitBtn">Get started
+                            <button type="button" class="w-100 btn btn-lg btn-primary" id="submitBtn">{% trans 'Get started' %}
                             </button>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                 <div class="col">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
-                            <h4 class="my-0 fw-normal">Yearly</h4>
+                            <h4 class="my-0 fw-normal">{% trans 'Yearly' %}</h4>
                         </div>
                         <div class="card-body">
                             <h1 class="card-title pricing-card-title">$99,99</h1>
@@ -72,7 +72,7 @@
                                 <li>Phone and email support</li>
                                 <li>Help center access</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-primary" id="submitBtn1">Get started
+                            <button type="button" class="w-100 btn btn-lg btn-primary" id="submitBtn1">{% trans 'Get started' %}
                             </button>
                         </div>
                     </div>

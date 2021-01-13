@@ -4,7 +4,7 @@ from django.views.generic import View
 import stripe
 from django.http import JsonResponse, FileResponse
 from .forms import CreateQrCodeForm, CreateQrCodeForMenuForm, CategoryForm, ProductForm
-from .models import CafeMenu, Category, Product, Customer, User
+from .models import CafeMenu, Category, Product, Customer, User, Currency
 import qrcode
 from io import BytesIO
 from django.core.files import File
@@ -30,19 +30,23 @@ class Register(View):
     def get(self, request, *args, **kwargs):
         context = {
             'form': RegisterForm(),
+            'form_customer': CustomerForm()
         }
         return render(request, 'registration/sign_up.html', context)
 
     def post(self, request, *args, **kwargs):
         form = RegisterForm(request.POST)
+        form_customer = CustomerForm(request.POST)
         if form.is_valid():
             form.save()
             username = self.request.POST['username']
             password = self.request.POST['password1']
             # authenticate user then login
             user = authenticate(username=username, password=password)
-            b = Customer(user=user, company_name=self.request.POST['company'])
+            b = Customer(user=user, company_name=request.POST['company_name'], currency_symbol_id=int(request.POST['currency_symbol']))
+            print(b)
             b.save()
+            print(b.save())
             login(self.request, user)
             return redirect('category')
         else:
@@ -68,34 +72,39 @@ def createQRcode(request):
 
 
 class SecondPage(View):
-
+    @csrf_exempt
     def get(self, request, *args, **kwargs):
         object = get_object_or_404(Customer, id=kwargs['id'])
-
-        try:
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        if object.stripeSubscriptionId:
             subscription = stripe.Subscription.retrieve(object.stripeSubscriptionId)
-        except:
-            return render(request, 'oops.html')
+
+        else:
+            return render(request, 'oops.html', {})
+
         if subscription.status == 'active':
             products = Product.objects.filter(owner=object)
+
             categories = Category.objects.filter(owner=object)
+
             context = {
                 'products': products,
                 'categories': categories,
                 'customer': object,
-                'object': object
             }
-
             return render(request, 'sp.html', context)
+
         else:
-            return render(request, 'oops.html')
+            return render(request, 'oops.html', {})
 
 
 class AddCategory(View):
     def get(self, request):
         if request.user.is_authenticated:
+            customer = get_object_or_404(Customer, user=request.user)
             context = {
-                'forms': CategoryForm
+                'forms': CategoryForm,
+                'customer': customer
             }
 
             return render(request, 'add_category.html', context)
@@ -117,11 +126,13 @@ class AddCategory(View):
 class CategoryDetail(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            customer = get_object_or_404(Customer, user=request.user)
             category = Category.objects.get(id=int(kwargs['slug']))
             product = Product.objects.filter(category=category)
             context = {
                 'category': category,
-                'product': product
+                'product': product,
+                'customer': customer
             }
             return render(request, 'category-detail.html', context)
         else:
@@ -131,9 +142,11 @@ class CategoryDetail(View):
 class EditCategory(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            customer = get_object_or_404(Customer, user=request.user)
             category = Category.objects.get(id=int(kwargs['slug']))
             context = {
-                'forms': CategoryForm(instance=category)
+                'forms': CategoryForm(instance=category),
+                'customer': customer
             }
             return render(request, 'edit_category.html', context)
         else:
@@ -167,7 +180,8 @@ class CategoryView(View):
             customer = Customer.objects.get(user=request.user.id)
             categories = Category.objects.filter(owner__company_name=customer.company_name)
             context = {
-                'categories': categories
+                'categories': categories,
+                'customer': customer
             }
             return render(request, 'category_view.html', context)
         else:
@@ -177,10 +191,12 @@ class CategoryView(View):
 class AddProduct(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            customer = Customer.objects.get(user=request.user.id)
             category = Category.objects.get(id=int(kwargs['slug']))
             context = {
                 'forms': ProductForm,
                 'category': category,
+                'customer': customer
             }
             return render(request, 'add_product.html', context)
         else:
@@ -206,10 +222,12 @@ class EditProduct(View):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            customer = Customer.objects.get(user=request.user.id)
             product = Product.objects.get(id=int(kwargs['slug']))
             context = {
                 'forms': ProductForm(instance=product),
-                'product': product
+                'product': product,
+                'customer': customer
             }
             return render(request, 'edit_product.html', context)
         else:
@@ -260,7 +278,8 @@ class MenuView(View):
             categories = Category.objects.filter(owner=customer)
             context = {
                 'products': products,
-                'categories': categories
+                'categories': categories,
+                'customer': customer
             }
 
             return render(request, 'product_view.html', context)
@@ -341,7 +360,7 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = settings.ALLOWED_HOSTS[0]
+        domain_url = 'http://localhost:8000/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -366,7 +385,7 @@ def create_checkout_session(request):
 @csrf_exempt
 def create_checkout_session1(request):
     if request.method == 'GET':
-        domain_url = settings.ALLOWED_HOSTS[0]
+        domain_url = 'http://localhost:8000/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -389,7 +408,7 @@ def create_checkout_session1(request):
 
 @login_required
 def success(request):
-    object = get_object_or_404(Customer, id=request.user.id)
+    object = Customer.objects.get(user_id=int(request.user.id))
     link2 = settings.ALLOWED_HOSTS[0] + object.get_absolute_url()
     qrcode_image = qrcode.make(link2)
     canvas = Image.new('RGB', (qrcode_image.pixel_size, qrcode_image.pixel_size), 'white')
@@ -435,9 +454,10 @@ def stripe_webhook(request):
         client_reference_id = session.get('client_reference_id')
         stripe_customer_id = session.get('customer')
         stripe_subscription_id = session.get('subscription')
-
+        print(stripe_customer_id, stripe_subscription_id)
         # Get the user and create a new StripeCustomer
         user = User.objects.get(id=client_reference_id)
+        print(user)
         customer = Customer.objects.get(user=user)
         customer.stripeCustomerId = stripe_customer_id
         customer.stripeSubscriptionId = stripe_subscription_id
@@ -456,6 +476,7 @@ def cancel_subscription(request):
         customer = Customer.objects.get(user=request.user.id)
         res = stripe.Subscription.delete(customer.stripeSubscriptionId)
         if res.status == 'canceled':
+            customer.stripeCustomerId = ''
             customer.stripeSubscriptionId = ''
             customer.save()
             return render(request, 'cancel.html')
@@ -489,3 +510,26 @@ class DownloadQR(View):
                 return redirect('home')
         else:
             return redirect('login')
+
+class EditCustomer(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            customer = Customer.objects.get(user=request.user.id)
+            form = CustomerForm(instance=customer)
+            context = {
+                'form': form,
+                'customer': customer
+            }
+            return render(request, 'edit-customer.html', context)
+        else:
+            return redirect('login')
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            customer = Customer.objects.get(user=request.user.id)
+            form = CustomerForm(request.POST, request.FILES, instance=customer)
+            form.save()
+            return redirect('profile')
+        else:
+            return redirect('login')
+

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 {% block title %}
     Welcome
 {% endblock %}
@@ -20,23 +20,23 @@
                             <span class="text-primary">Café</span> / Restaurant
                         </h2>
                         <h1 class="section__heading section_welcome__heading text-center">
-                            QR code menu
+                            {% trans 'QR code menu' %}
                         </h1>
+
                         <p class="section__subheading section_welcome__subheading text-center text-muted">
-                            If you are the owner of a catering establishment, you can create a menu for your
-                            establishment, which will be stored in the cloud and will be available by QR code
+                            {% trans 'If you are the owner of a catering establishment, you can create a menu for your establishment, which will be stored in the cloud and will be available by QR code' %}
                         </p>
                         {% if user.is_authenticated %}
                             <div class="text-center">
                                 <a href="{% url 'category' %}" class="btn btn-primary text-white">
-                                    Add menu
+                                    {% trans 'Add menu' %}
                                 </a>
                             </div>
 
                         {% else %}
                             <div class="text-center">
                                 <a href="{% url 'sign_up' %}" class="btn btn-primary text-white">
-                                    Get Start
+                                    {% trans 'Get Start' %}
                                 </a>
                             </div>
                         {% endif %}

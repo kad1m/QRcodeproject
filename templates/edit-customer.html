@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{% trans 'Edit profile' %}
+{% endblock %}
+{% block content %}
+    <section class="section section_header" data-parallax="scroll"
+             data-image-src="{% if customer.profile_image %}
+    {{ customer.profile_image.url }}
+    {% else %}
+    https://source.unsplash.com/5AMSZcgN_cM/1920x1080
+    {% endif %}">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <!-- Heading -->
+                    <h1 class="section__heading section_header__heading text-center">
+                        {% trans 'Edit profile' %}
+                    </h1>
+
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+    <div class="container" style="margin-top: 20px;">
+        <div class="row justify-content-center">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.currency_symbol }}<br>
+                {{ form.profile_image }}<br>
+                <br>
+                <center>
+                    <button class="btn btn-primary">{% trans 'Save' %}</button>
+                </center>
+                <br>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

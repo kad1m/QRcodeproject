@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}
-    sign up
+    {% trans 'Sign up' %}
 {% endblock %}
 {% block content %}
     <section class="section section_header" data-parallax="scroll" data-image-src="https://source.unsplash.com/5AMSZcgN_cM/1920x1080">
@@ -10,7 +11,7 @@
 
                     <!-- Heading -->
                     <h1 class="section__heading section_header__heading text-center">
-                        Sign up
+                        {% trans 'Sign up' %}
                     </h1>
 
                 </div>
@@ -18,18 +19,30 @@
         </div> <!-- / .container -->
     </section>
     <div class="container">
+
         <form action="" method="post" style="margin-top: 50px; margin-bottom: 50px;">
+
             {% csrf_token %}
+
             <p>{{ form.username }}</p>
-            <p>{{ form.password1 }}</p>
+            <p>{{ form.username.help_text }}</p>
+
+            <p>{{ form.password1}}</p>
+            <p>{% for foo in form.password1.help_text %}
+                {{ foo }}<br>
+            {% endfor %}
+            </p>
+
             <p>{{ form.password2 }}</p>
+            <p>{{ form.password2.help_text }}</p>
 
-            <input class="form-control" placeholder="Company name" type="text" name="company">
+            <p>{{ form_customer.company_name }}</p>
+            <p>{% trans 'Enter the name of the company that will be displayed to your clients' %}</p>
 
-            {% if form.errors %}
-error!
-{% endif %}
-            <center><button type="submit" class="btn btn-primary" style="margin-top: 20px;">Register</button></center>
+            <p>{{ form_customer.currency_symbol }}</p>
+            <p>weqweqweq</p>
+
+            <center><button type="submit" class="btn btn-primary" style="margin-top: 20px;">{% trans 'Sign up' %}</button></center>
         </form>
     </div>
 {% endblock %}

@@ -1,5 +1,4 @@
-{% load static %}
-
+{% load static i18n %}
 
 <!doctype html>
 <html lang="en">
@@ -53,7 +52,7 @@
                     <a class="nav-link" href="news-and-events.html">News & Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'how_it_work' %}">How its work</a>
+                    <a class="nav-link" href="{% url 'how_it_work' %}">{% trans 'How its work' %}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="reservation.html">Reservation</a>
@@ -73,31 +72,32 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="nav-item__menu" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            Profile
+                            {% trans 'Profile' %}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="nav-item__menu">
                             <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user-alt"></i>
-                                hello {{ user.username }}</a>
-                            <a class="dropdown-item" href="{% url 'category' %}"><i class="fas fa-coffee"></i> Your category</a>
-                            <a class="dropdown-item" href="{% url 'product' %}"><i class="fas fa-coffee"></i> Menu preview</a>
+                                 {% trans 'Profile' %} {{ user.username }}</a>
+                            <a class="dropdown-item" href="{% url 'edit_profile' %}"><i
+                                    class="fas fa-edit"></i> {% trans 'Edit profile' %}</a>
+                            <a class="dropdown-item" href="{% url 'category' %}"><i class="fas fa-coffee"></i> {% trans 'Your category' %}</a>
+                            <a class="dropdown-item" href="{% url 'product' %}"><i class="fas fa-th-list"></i> {% trans 'Menu preview' %}</a>
                             <a class="dropdown-item" href="{% url 'home' %}"><i class="fas fa-money-check-alt"></i>
-                                Payments</a>
-                            <a class="dropdown-item" href="{% url 'download' %}"><i class="fas fa-download"></i> Download QR code</a>
-                            <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Log
-                                out</a>
+                                {% trans 'Payments' %}</a>
+                            <a class="dropdown-item" href="{% url 'download' %}"><i class="fas fa-download"></i> {% trans 'Download QR code' %}</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> {% trans 'Log out' %}</a>
 
                         </div>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Sign in <i class="fas fa-sign-in-alt"></i></a>
+                        <a class="nav-link" href="{% url 'login' %}">{% trans 'Sign in' %} <i class="fas fa-sign-in-alt"></i></a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about_us' %}">About Us</a>
+                    <a class="nav-link" href="{% url 'about_us' %}">{% trans 'About Us' %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
+                    <a class="nav-link" href="{% url 'contact_us' %}">{% trans 'Contact' %}</a>
                 </li>
             </ul>
 
@@ -150,7 +150,24 @@
 
                 <!-- Opening hours -->
                 <h5 class="section_footer__heading">
-                    Opening hours
+                    <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ redirect_to }}">
+                            <select name="language" class="form-select form-select-sm" id="">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages  %}
+                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                                    selected
+                                    {% endif %} >
+                                    {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                {% endfor %}
+
+                            </select>
+                            <input type="submit" class="" value="{% trans 'Change language' %}">
+                        </form>
                 </h5>
                 <div class="section_footer__open">
                     <div class="section_footer__open__days">Monday - Thursday</div>
