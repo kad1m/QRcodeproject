@@ -120,7 +120,7 @@
 
                             </div>
                         </div>
-                        <div class="row section_menu__grid" id="menu_images">
+                        <div class=" section_menu__grid" id="menu_images">
                             {% for product in products %}
                                 <div class="col-md-6 section_menu__grid__item {{ product.category.id }}">
                                     <div class="section_menu__item">
@@ -140,7 +140,7 @@
                                                     {{ product.description }}
                                                 </p>
                                             </div>
-                                            <div class="col-2">
+                                            <div class="col-2" style="margin-left: -30px;">
                                                 <div class="section_menu__item__price text-center">
                                                     {{customer.currency_symbol}}{{ product.price }}
                                                 </div>

@@ -27,8 +27,10 @@
         <div class="row justify-content-center">
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                {{ form.company_name }} <br>
                 {{ form.currency_symbol }}<br>
                 {{ form.profile_image }}<br>
+
                 <br>
                 <center>
                     <button class="btn btn-primary">{% trans 'Save' %}</button>

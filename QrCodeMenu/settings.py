@@ -108,7 +108,8 @@ LANGUAGE_CODE = 'ru-RU'
 gettext = lambda s: s
 LANGUAGES = (
     ('en', gettext('English')),
-    ('ru', gettext('Russia'))
+    ('ru', gettext('Russia')),
+    ('uk', gettext('Ukraine')),
 
 )
 LOCALE_PATHS = (os.path.join(
@@ -149,3 +150,8 @@ STRIPE_PRICE_ID2 = ''
 
 STRIPE_ENDPOINT_SECRET = ''
 
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

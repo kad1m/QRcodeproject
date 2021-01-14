@@ -3,7 +3,7 @@ from .models import Website, CafeMenu, Category, Product, Customer
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 
 class CreateQrCodeForm(forms.ModelForm):
@@ -59,12 +59,11 @@ class UserLoginForm(AuthenticationForm):
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': _('Username'), 'id': 'hello'}))
+        attrs={'class': 'form-control', 'placeholder': _('Username')}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
             'placeholder': _('Password'),
-            'id': 'hi',
         }
     ))
 
@@ -75,7 +74,7 @@ class RegisterForm(UserCreationForm):
         fields = ['username', 'password1', 'password2']
 
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': _('Username'), 'id': 'hello'}), help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'))
+        attrs={'class': 'form-control', 'placeholder': _('Username')}), help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'))
     password1 = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',

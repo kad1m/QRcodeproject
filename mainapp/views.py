@@ -9,7 +9,6 @@ import qrcode
 from io import BytesIO
 from django.core.files import File
 from PIL import Image, ImageDraw
-from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm, CustomerForm
 from django.contrib.auth import authenticate, login
 from django.conf import settings
@@ -17,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
-from stripe import webhook
+from django.core.mail import send_mail
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
@@ -491,7 +490,32 @@ def about_us(request):
 
 
 def contact_us(request):
-    return render(request, 'contact-us.html')
+    if request.method == 'GET':
+        return render(request, 'contact-us.html')
+    else:
+        print(request.POST['contact__form__name'])
+        print(request.POST['contact__form__email'])
+        print(request.POST['contact__form__message'])
+        send_mail(
+            request.POST['contact__form__name'] + ' ' + request.POST['contact__form__email'],
+            request.POST['contact__form__message'],
+            settings.EMAIL_HOST_USER,
+            [settings.EMAIL_HOST_USER],
+            fail_silently=False,
+        )
+        send_mail(
+            'Thank you, ' + request.POST['contact__form__name'],
+            'Thank you {0} we received your email, we will reply to you shortly'.format(request.POST['contact__form__name']),
+            settings.EMAIL_HOST_USER,
+            [request.POST['contact__form__email']],
+            fail_silently=False,
+        )
+        context = {
+            'ty_message': 'Thank you {0} we received your email, we will reply to you shortly'.format(request.POST['contact__form__name']),
+            'name': request.POST['contact__form__name']
+        }
+        return render(request, 'contact-us.html', context)
+
 
 
 def how_it_work(request):
@@ -532,4 +556,5 @@ class EditCustomer(View):
             return redirect('profile')
         else:
             return redirect('login')
+
 

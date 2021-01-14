@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-14 12:44+0200\n"
+"POT-Creation-Date: 2021-01-14 19:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
 #: QrCodeMenu/settings.py:110
 msgid "English"
@@ -29,78 +30,82 @@ msgstr ""
 msgid "Russia"
 msgstr ""
 
+#: QrCodeMenu/settings.py:112
+msgid "Ukraine"
+msgstr ""
+
 #: templates/add_category.html:4 templates/add_category.html:18
 #: templates/add_category.html:39 templates/category_view.html:37
 msgid "Add category"
-msgstr "Добавить категорию"
+msgstr "Додати категорію"
 
 #: templates/add_category.html:27 templates/add_product.html:27
 #: templates/category-detail.html:27 templates/category_view.html:27
 #: templates/edit_category.html:27 templates/edit_product.html:27
 #: templates/product_view.html:25
 msgid "Home"
-msgstr "Главная"
+msgstr "Головна"
 
 #: templates/add_category.html:28 templates/add_product.html:28
 #: templates/category-detail.html:28 templates/category_view.html:28
 #: templates/edit_category.html:28 templates/edit_product.html:28
 #: templates/product_view.html:26
 msgid "Category"
-msgstr "Ваши категории"
+msgstr "Категорії"
 
 #: templates/add_category.html:29 templates/edit_category.html:4
 #: templates/edit_category.html:18 templates/edit_category.html:29
 msgid "Edit category"
-msgstr "Изменить категорию"
+msgstr "Редагувати категорію"
 
 #: templates/add_product.html:4 templates/add_product.html:29
 #: templates/add_product.html:40 templates/category-detail.html:33
 #: templates/category_view.html:58
 msgid "Add product"
-msgstr "Добавить продукт"
+msgstr "Додати продукт"
 
 #: templates/add_product.html:18
 msgid "Add product to"
-msgstr "Добавить продукт в"
+msgstr "Додати продукт до"
 
 #: templates/base.html:55
 msgid "How its work"
-msgstr "Как это работает"
+msgstr "Як це працює"
 
 #: templates/base.html:75 templates/base.html:79 templates/profile.html:19
 msgid "Profile"
-msgstr "Профиль"
+msgstr "Профіль"
 
 #: templates/base.html:81 templates/edit-customer.html:4
 #: templates/edit-customer.html:19
 msgid "Edit profile"
-msgstr "Редактировать профиль"
+msgstr "Редагувати профіль"
 
 #: templates/base.html:82
 msgid "Your category"
-msgstr "Ваши категории"
+msgstr "Ваші категорії"
 
 #: templates/base.html:83 templates/product_view.html:27
 #: templates/profile.html:98
 msgid "Menu preview"
-msgstr "Посмотреть меню"
+msgstr "Меню"
 
 #: templates/base.html:85 templates/home.html:5
 msgid "Payments"
-msgstr "Платежи"
+msgstr "Платежі"
 
 #: templates/base.html:86
 msgid "Download QR code"
-msgstr "Скачать QR код"
+msgstr "Завантажити QR код"
 
 #: templates/base.html:87
 msgid "Log out"
-msgstr "Выйти"
+msgstr "Вийти"
 
 #: templates/base.html:93 templates/registration/login.html:4
 #: templates/registration/login.html:16 templates/registration/login.html:40
 msgid "Sign in"
-msgstr "Войти"
+msgstr "Увійти"
 
 #: templates/base.html:97
 msgid "About Us"
@@ -108,110 +113,109 @@ msgstr "Про нас"
 
 #: templates/base.html:100
 msgid "Contact"
-msgstr "Контакты"
+msgstr "Контакти"
 
 #: templates/base.html:169
 msgid "Change language"
-msgstr "Сменить язык"
+msgstr "Змінити мову"
 
 #: templates/cancel.html:4 templates/cancel.html:15
 msgid "You have cancelled the checkout."
-msgstr "Вы отменили оформление заказа."
+msgstr "Ви скасували оплату."
 
 #: templates/cancel.html:17 templates/success.html:18
 msgid "Return to the dashboard"
-msgstr "Вернуться в панель управления"
+msgstr "Поверніться до інформаційної панелі"
 
 #: templates/category_view.html:4 templates/product_view.html:4
 msgid "Category of"
-msgstr "Категории"
+msgstr "Категорія"
 
 #: templates/category_view.html:18
 msgid "Menu categories"
-msgstr "Категории вашего меню"
+msgstr "Категорії вашого меню"
 
 #: templates/category_view.html:40
 msgid "View menu"
-msgstr "Просмотр меню"
+msgstr "Переглянути меню"
 
 #: templates/contact-us.html:4 templates/contact-us.html:18
-
 msgid "Contact Us"
-msgstr "Контакты"
+msgstr "Зв'язатися з нами"
 
 #: templates/contact-us.html:38 templates/contact-us.html:132
 msgid "Write us"
-msgstr "Напишите нам"
+msgstr "Напишіть нам"
 
 #: templates/contact-us.html:54 templates/contact-us.html:148
 msgid "Visit us"
-msgstr "Мы находимся"
+msgstr "Відвідайте нас"
 
 #: templates/contact-us.html:62 templates/contact-us.html:156
 msgid "Social links"
-msgstr "Мы в соц сетях"
+msgstr "Ми у соц мережах"
 
 #: templates/contact-us.html:91
 msgid "Hello"
-msgstr "Привет"
+msgstr "Привіт"
 
 #: templates/contact-us.html:114
 msgid "Get in touch with us"
-msgstr "Связатся с нами"
+msgstr "Зв'яжіться з нами"
 
 #: templates/contact-us.html:140
 msgid "Call us"
-msgstr "Позвоните нам"
+msgstr "Зателефонуйте нам"
 
 #: templates/contact-us.html:187
 msgid "Full name"
-msgstr "Полное имя"
+msgstr "Ваше ім'я"
 
 #: templates/contact-us.html:193
 msgid "E-mail address"
-msgstr "E-mail адресс"
+msgstr "E-mail адреса"
 
 #: templates/contact-us.html:199
 msgid "Message"
-msgstr "Сообщение"
+msgstr "Повідомлення"
 
 #: templates/contact-us.html:203
 msgid "Send message"
-msgstr "Отправить"
+msgstr "Відправити"
 
 #: templates/edit-customer.html:36 templates/edit_category.html:42
 #: templates/edit_product.html:40
 msgid "Save"
-msgstr "Сохранить"
+msgstr "Зберігти"
 
 #: templates/edit_product.html:4 templates/edit_product.html:18
 #: templates/edit_product.html:29
 msgid "Edit product"
-msgstr "Редактировать продукт"
+msgstr "Редагувати продукт"
 
 #: templates/home.html:18
 msgid "Pricing"
-msgstr "Выберите план"
+msgstr "Ціни"
 
 #: templates/home.html:29
 msgid "Your subscription"
-msgstr "Ваша подписка"
+msgstr "Ваша підписка"
 
 #: templates/home.html:39 templates/profile.html:60
 msgid "Cancel subscription"
-msgstr "Отменить подписку"
+msgstr "Відмінити підписку"
 
 #: templates/home.html:47
 msgid "Monthly"
-msgstr "Ежемесячно"
+msgstr "Щомісячна"
 
 #: templates/home.html:57 templates/home.html:75
 msgid "Get started"
-msgstr "Создать"
+msgstr "Розпочати"
 
 #: templates/home.html:65
 msgid "Yearly"
-msgstr "Ежегодично"
+msgstr "Щорічна"
 
 #: templates/index.html:23
 msgid "QR code menu"
@@ -222,24 +226,21 @@ msgid ""
 "If you are the owner of a catering establishment, you can create a menu for "
 "your establishment, which will be stored in the cloud and will be available "
 "by QR code"
-msgstr ""
-"Если вы владелец заведения общественного питания, вы можете составить меню "
-"для своего заведения, которое будет храниться в облаке и будет доступно по "
-"QR-коду"
+msgstr "Якщо ви є власником закладу громадського харчування, ви можете створити меню для свого закладу, яке зберігатиметься у хмарі та буде доступним за допомогою QR-коду"
 
 #: templates/index.html:32
 msgid "Add menu"
-msgstr "Добавить меню"
+msgstr "Додати меню"
 
 #: templates/index.html:39
 msgid "Get Start"
-msgstr "Создать"
+msgstr "Розпочати"
 
 #: templates/oops.html:4 templates/oops.html:15
 msgid ""
 "Oops ... your favorite restaurant apparently forgot to extend the menu "
 "access :("
-msgstr "Упс... Ваш любимое заведение, похоже, забыл продлить доступ к меню :("
+msgstr "Упс... ваш улюбленний заклад мабуть забув продовжити доступ до меню :("
 
 #: templates/product_view.html:17
 msgid "Menu"
@@ -247,7 +248,7 @@ msgstr "Меню"
 
 #: templates/product_view.html:37
 msgid "Browse by categories"
-msgstr "Просмотр"
+msgstr "Категорії"
 
 #: templates/product_view.html:40
 msgid ""
@@ -257,66 +258,62 @@ msgstr ""
 
 #: templates/profile.html:4
 msgid "Profile user"
-msgstr "Профиль пользователя"
+msgstr "Профіль користувача"
 
 #: templates/profile.html:41
 msgid "Download"
-msgstr "Скачать"
+msgstr "Завантажити"
 
 #: templates/profile.html:48
 msgid "Create QR code"
-msgstr "Создать QR код"
+msgstr "Сворити QR код"
 
 #: templates/profile.html:52
 msgid "Welcome"
-msgstr "Добро пожаловать"
+msgstr "Вітаємо"
 
 #: templates/profile.html:53
 msgid "Thank you for being with us."
-msgstr "Спасибо что вы с нами"
+msgstr "Дякуємо що ви з нами"
 
 #: templates/profile.html:54
 msgid "Your next payment will be"
-msgstr "Ваш следующий платеж произойдет"
+msgstr "Ваш наступний платіж відбудеться"
 
 #: templates/profile.html:62
 msgid "Edit menu"
-msgstr "Изменить меню"
+msgstr "Редагувати меню"
 
 #: templates/profile.html:73
 msgid "Free plan"
-msgstr "Стартовый аккаунт"
+msgstr "Початковий план"
 
 #: templates/profile.html:74
 msgid ""
 "Using a free plan, you can only create a menu and see how it will look in "
 "the end."
-msgstr ""
-"Используя бесплатный тарифный план, вы можете только создать меню и "
-"посмотреть, как оно будет выглядеть в итоге."
+msgstr "Використовуючи безкоштовний план, ви можете лише створити меню і подивитися, як воно виглядатиме у фінальному вигляді."
 
 #: templates/profile.html:77
 msgid "Upgrade your plan to get the code and open your menu to visitors."
-msgstr ""
-"Измените свой план, чтобы получить код и открыть свое меню для посетителей."
+msgstr "Оновіть свій план, щоб отримати код і надати доступ до меню для відвідувачів."
 
 #: templates/profile.html:81
 msgid "Upgrade plan"
-msgstr "Изменить план"
+msgstr "Змінити план"
 
 #: templates/registration/sign_up.html:4 templates/registration/sign_up.html:14
 #: templates/registration/sign_up.html:45
 msgid "Sign up"
-msgstr "Создать аккаунт"
+msgstr "Зареєструватися"
 
 #: templates/registration/sign_up.html:40
 msgid "Enter the name of the company that will be displayed to your clients"
-msgstr ""
-"Введите название компании, которое будет отображаться для ваших клиентов"
+msgstr "Введіть назву компанії що буду відображатися для ваших відвідувачів"
 
 #: templates/registration/sign_up.html:43
 msgid "Select currency that will be displayed to your clients"
-msgstr "Выберите валюту, которая будет отображаться для ваших клиентов"
+msgstr "Виберіть валюту, що буде відображатися для ваших клієнтів"
 
 #: templates/sp.html:18
 msgid "menu"
@@ -324,7 +321,7 @@ msgstr "меню"
 
 #: templates/success.html:4 templates/success.html:15
 msgid "You have successfully subscribed!"
-msgstr "Вы успешно подписались!"
+msgstr "Ви успішно підписалися"
 
 #: venv/lib/python3.8/site-packages/django/contrib/messages/apps.py:7
 msgid "Messages"
@@ -1519,6 +1516,3 @@ msgstr ""
 #, python-format
 msgid "\"%(value)s\" value must be valid JSON."
 msgstr ""
-
-#~ msgid "Edit product in"
-#~ msgstr "Редактировать продукт в"
