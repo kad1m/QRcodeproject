@@ -3,7 +3,7 @@ from .models import Website, CafeMenu, Category, Product, Customer
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.utils.translation import gettext as _
+from django.utils.translation import ugettext_lazy as _
 
 
 class CreateQrCodeForm(forms.ModelForm):
@@ -82,9 +82,9 @@ class RegisterForm(UserCreationForm):
             'id': 'hi',
         }
     ), help_text=[_('Your password can’t be too similar to your other personal information.'),
-                   _('Your password must contain at least 8 characters.'),
-                   _('Your password can’t be a commonly used password.'),
-                   _('Your password can’t be entirely numeric.')])
+                  _('Your password must contain at least 8 characters.'),
+                  _('Your password can’t be a commonly used password.'),
+                  _('Your password can’t be entirely numeric.')])
     password2 = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',

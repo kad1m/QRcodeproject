@@ -517,9 +517,15 @@ def contact_us(request):
         return render(request, 'contact-us.html', context)
 
 
-
 def how_it_work(request):
     return render(request, 'gallery.html')
+
+
+def example_menu(request):
+    return render(request, 'example_menu.html')
+
+def comming_soon(request):
+    return render(request, 'comming_soon.html')
 
 
 class DownloadQR(View):

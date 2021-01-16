@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Index, SecondPage, AddCategory, EditCustomer, createQRcode, DownloadQR, EditProduct, DeleteCategory, DeleteProduct, how_it_work, about_us, contact_us, CategoryView,profile, ProductView, MenuView, AddProduct, EditCategory, CategoryDetail, Register, home, stripe_config, create_checkout_session, cancel_subscription, create_checkout_session1, success, cancel, stripe_webhook
+from .views import Index, SecondPage, AddCategory, EditCustomer, comming_soon, createQRcode, DownloadQR, EditProduct, DeleteCategory, DeleteProduct, how_it_work, about_us, contact_us, CategoryView,profile, ProductView, MenuView, AddProduct, EditCategory, CategoryDetail, Register, home, stripe_config, create_checkout_session, cancel_subscription,example_menu, create_checkout_session1, success, cancel, stripe_webhook
 
 urlpatterns = [
     path('', Index.as_view(), name='index'),
@@ -30,4 +30,6 @@ urlpatterns = [
     path('contact-us/', contact_us, name='contact_us'),
     path('how-it-work/', how_it_work, name='how_it_work'),
     path('download/', DownloadQR.as_view(), name='download'),
+    path('example-menu/', example_menu, name='example_menu'),
+    path('comming-soon/', comming_soon, name='comming_soon'),
 ]

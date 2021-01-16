@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-14 12:44+0200\n"
+"POT-Creation-Date: 2021-01-15 18:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,79 @@ msgstr ""
 #: QrCodeMenu/settings.py:111
 msgid "Russia"
 msgstr ""
+
+#: QrCodeMenu/settings.py:112
+msgid "Ukraine"
+msgstr ""
+
+#: mainapp/forms.py:16
+msgid "Your name"
+msgstr "Полное имя"
+
+#: mainapp/forms.py:36
+msgid "Category name"
+msgstr "Ваши категории"
+
+#: mainapp/forms.py:38 mainapp/forms.py:54
+msgid "Description"
+msgstr "Описание"
+
+#: mainapp/forms.py:48
+msgid "Product name"
+msgstr "Название продукта"
+
+#: mainapp/forms.py:51
+msgid "Price"
+msgstr "Цена"
+
+#: mainapp/forms.py:62 mainapp/forms.py:77
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: mainapp/forms.py:66
+msgid "Password"
+msgstr "Пароль"
+
+#: mainapp/forms.py:77
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Необходимые. 150 символов или меньше. Только буквы, цифры и @ /. / + / - / _."
+
+#: mainapp/forms.py:84
+msgid "Your password can’t be too similar to your other personal information."
+msgstr "Ваш пароль не может быть слишком похож на вашу другую личную информацию."
+
+#: mainapp/forms.py:85
+msgid "Your password must contain at least 8 characters."
+msgstr "Ваш пароль должен содержать не менее 8 символов."
+
+#: mainapp/forms.py:86
+msgid "Your password can’t be a commonly used password."
+msgstr "Пароль не может быть общеупотребительным паролем."
+
+#: mainapp/forms.py:87
+msgid "Your password can’t be entirely numeric."
+msgstr "Ваш пароль не может быть полностью числовым."
+
+#: mainapp/forms.py:91
+msgid "Confirm password"
+msgstr "Подтвердите пароль"
+
+#: mainapp/forms.py:95
+msgid "Enter the same password as before, for verification."
+msgstr "Подтвердите пароль, для проверки."
+
+#: mainapp/forms.py:105
+msgid "Company name"
+msgstr "Название компании"
+
+#: templates/about-us.html:17 templates/base.html:102 templates/base.html:127
+msgid "About Us"
+msgstr "О нас"
+
+#: templates/about-us.html:175 templates/contact-us.html:4
+#: templates/contact-us.html:18
+msgid "Contact Us"
+msgstr "Контакты"
 
 #: templates/add_category.html:4 templates/add_category.html:18
 #: templates/add_category.html:39 templates/category_view.html:37
@@ -63,9 +136,18 @@ msgstr "Добавить продукт"
 msgid "Add product to"
 msgstr "Добавить продукт в"
 
+#: templates/base.html:52
+msgid "News & Events"
+msgstr "Новости & События"
+
 #: templates/base.html:55
 msgid "How its work"
 msgstr "Как это работает"
+
+#: templates/base.html:58 templates/base.html:175 templates/example_menu.html:4
+#: templates/example_menu.html:16
+msgid "Example menu"
+msgstr "Пример меню"
 
 #: templates/base.html:75 templates/base.html:79 templates/profile.html:19
 msgid "Profile"
@@ -76,41 +158,51 @@ msgstr "Профиль"
 msgid "Edit profile"
 msgstr "Редактировать профиль"
 
-#: templates/base.html:82
+#: templates/base.html:83
 msgid "Your category"
 msgstr "Ваши категории"
 
-#: templates/base.html:83 templates/product_view.html:27
+#: templates/base.html:85 templates/product_view.html:27
 #: templates/profile.html:98
 msgid "Menu preview"
 msgstr "Посмотреть меню"
 
-#: templates/base.html:85 templates/home.html:5
+#: templates/base.html:87 templates/home.html:5
 msgid "Payments"
 msgstr "Платежи"
 
-#: templates/base.html:86
+#: templates/base.html:89
 msgid "Download QR code"
 msgstr "Скачать QR код"
 
-#: templates/base.html:87
+#: templates/base.html:91
 msgid "Log out"
 msgstr "Выйти"
 
-#: templates/base.html:93 templates/registration/login.html:4
+#: templates/base.html:97 templates/registration/login.html:4
 #: templates/registration/login.html:16 templates/registration/login.html:40
 msgid "Sign in"
 msgstr "Войти"
 
-#: templates/base.html:97
-msgid "About Us"
-msgstr "Про нас"
-
-#: templates/base.html:100
+#: templates/base.html:105
 msgid "Contact"
 msgstr "Контакты"
 
-#: templates/base.html:169
+#: templates/base.html:130
+msgid ""
+"Ideal tool for restaurants, cafes, bars, fast food to provide an attractive "
+"QR menu for your  clients"
+msgstr "Идеальный инструмент для ресторанов, кафе, баров, фаст-фудов, чтобы предоставить вашим клиентам привлекательное QR-меню"
+
+#: templates/base.html:138
+msgid "Contact info"
+msgstr "Контактна информация"
+
+#: templates/base.html:142 templates/index.html:81
+msgid "Kharkiv, Ukraine, 61000"
+msgstr "Харьков, Украина, 61000"
+
+#: templates/base.html:168
 msgid "Change language"
 msgstr "Сменить язык"
 
@@ -134,10 +226,9 @@ msgstr "Категории вашего меню"
 msgid "View menu"
 msgstr "Просмотр меню"
 
-#: templates/contact-us.html:4 templates/contact-us.html:18
-
-msgid "Contact Us"
-msgstr "Контакты"
+#: templates/comming_soon.html:16
+msgid "Comming soon"
+msgstr "Скоро"
 
 #: templates/contact-us.html:38 templates/contact-us.html:132
 msgid "Write us"
@@ -188,6 +279,26 @@ msgstr "Сохранить"
 #: templates/edit_product.html:29
 msgid "Edit product"
 msgstr "Редактировать продукт"
+
+#: templates/example_menu.html:32 templates/product_view.html:37
+msgid "Browse by categories"
+msgstr "Просмотр"
+
+#: templates/example_menu.html:44
+msgid "Main"
+msgstr ""
+
+#: templates/example_menu.html:47
+msgid "Lunch"
+msgstr ""
+
+#: templates/example_menu.html:50
+msgid "Dinner"
+msgstr ""
+
+#: templates/example_menu.html:53
+msgid "Drinks"
+msgstr ""
 
 #: templates/home.html:18
 msgid "Pricing"
@@ -244,10 +355,6 @@ msgstr "Упс... Ваш любимое заведение, похоже, заб
 #: templates/product_view.html:17
 msgid "Menu"
 msgstr "Меню"
-
-#: templates/product_view.html:37
-msgid "Browse by categories"
-msgstr "Просмотр"
 
 #: templates/product_view.html:40
 msgid ""

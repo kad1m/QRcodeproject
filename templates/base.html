@@ -49,13 +49,13 @@
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="news-and-events.html">News & Events</a>
+                    <a class="nav-link" href="{% url 'comming_soon' %}">{% trans 'News & Events' %}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'how_it_work' %}">{% trans 'How its work' %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="reservation.html">Reservation</a>
+                    <a class="nav-link" href="{% url 'example_menu' %}">{% trans 'Example menu' %}</a>
                 </li>
             </ul>
 
@@ -76,21 +76,26 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="nav-item__menu">
                             <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user-alt"></i>
-                                 {% trans 'Profile' %} {{ user.username }}</a>
+                                {% trans 'Profile' %} {{ user.username }}</a>
                             <a class="dropdown-item" href="{% url 'edit_profile' %}"><i
                                     class="fas fa-edit"></i> {% trans 'Edit profile' %}</a>
-                            <a class="dropdown-item" href="{% url 'category' %}"><i class="fas fa-coffee"></i> {% trans 'Your category' %}</a>
-                            <a class="dropdown-item" href="{% url 'product' %}"><i class="fas fa-th-list"></i> {% trans 'Menu preview' %}</a>
+                            <a class="dropdown-item" href="{% url 'category' %}"><i
+                                    class="fas fa-coffee"></i> {% trans 'Your category' %}</a>
+                            <a class="dropdown-item" href="{% url 'product' %}"><i
+                                    class="fas fa-th-list"></i> {% trans 'Menu preview' %}</a>
                             <a class="dropdown-item" href="{% url 'home' %}"><i class="fas fa-money-check-alt"></i>
                                 {% trans 'Payments' %}</a>
-                            <a class="dropdown-item" href="{% url 'download' %}"><i class="fas fa-download"></i> {% trans 'Download QR code' %}</a>
-                            <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> {% trans 'Log out' %}</a>
+                            <a class="dropdown-item" href="{% url 'download' %}"><i
+                                    class="fas fa-download"></i> {% trans 'Download QR code' %}</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}"><i
+                                    class="fas fa-sign-out-alt"></i> {% trans 'Log out' %}</a>
 
                         </div>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">{% trans 'Sign in' %} <i class="fas fa-sign-in-alt"></i></a>
+                        <a class="nav-link" href="{% url 'login' %}">{% trans 'Sign in' %} <i
+                                class="fas fa-sign-in-alt"></i></a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
@@ -119,11 +124,10 @@
 
                 <!-- About Us -->
                 <h5 class="section_footer__heading">
-                    About Us
+                    {% trans 'About Us' %}
                 </h5>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti dolorum, sint corporis nostrum,
-                    possimus unde eos vitae eius quasi saepe.
+                    {% trans 'Ideal tool for restaurants, cafes, bars, fast food to provide an attractive QR menu for your  clients' %}
                 </p>
 
             </div>
@@ -131,52 +135,50 @@
 
                 <!-- Contact info -->
                 <h5 class="section_footer__heading">
-                    Contact info
+                    {% trans 'Contact info' %}
                 </h5>
                 <ul class="section_footer__info">
                     <li>
-                        <i class="fas fa-map-marker-alt"></i> 1234 Altschul, New York, NY 10027-0000
+                        <i class="fas fa-map-marker-alt"></i>{% trans 'Kharkiv, Ukraine, 61000' %}
                     </li>
                     <li>
-                        <i class="fas fa-phone"></i> +1 987 654 3210
+                        <i class="fas fa-phone"></i><a href="tel:+380996690449">+38 (099) 669-04-49</a>
                     </li>
                     <li>
                         <i class="far fa-envelope"></i> <a href="mailto:admin@domain.com">admin@domain.com</a>
                     </li>
                 </ul>
+               <h5 class="section_footer__heading">
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ redirect_to }}">
+                        <select name="language" class="form-select form-select-sm" id="">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                                        selected
+                                {% endif %} >
+                                    {{ language.name_local }} ({{ language.code }})
+                                </option>
+                            {% endfor %}
+
+                        </select>
+                        <input type="submit" class="" value="{% trans 'Change language' %}">
+                    </form>
+                </h5>
 
             </div>
             <div class="col-sm-4">
 
-                <!-- Opening hours -->
-                <h5 class="section_footer__heading">
-                    <form action="{% url 'set_language' %}" method="post">
-                            {% csrf_token %}
-                            <input type="hidden" name="next" value="{{ redirect_to }}">
-                            <select name="language" class="form-select form-select-sm" id="">
-                                {% get_current_language as LANGUAGE_CODE %}
-                                {% get_available_languages as LANGUAGES %}
-                                {% get_language_info_list for LANGUAGES as languages %}
-                                {% for language in languages  %}
-                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
-                                    selected
-                                    {% endif %} >
-                                    {{ language.name_local }} ({{ language.code }})
-                                    </option>
-                                {% endfor %}
+            <h5 class="section_footer__heading">{% trans 'Example menu' %}
+                <br><br>
 
-                            </select>
-                            <input type="submit" class="" value="{% trans 'Change language' %}">
-                        </form>
-                </h5>
-                <div class="section_footer__open">
-                    <div class="section_footer__open__days">Monday - Thursday</div>
-                    <div class="section_footer__open__time">10:00 AM - 11:00 PM</div>
-                </div>
-                <div class="section_footer__open">
-                    <div class="section_footer__open__days">Friday - Sunday</div>
-                    <div class="section_footer__open__time">12:00 AM - 03:00 AM</div>
-                </div>
+            <img src="{% static 'example-menu.png' %}" alt="" width="50%" height="50%">
+            </h5>
+
+
 
             </div>
         </div> <!-- / .row -->
@@ -185,8 +187,10 @@
 
                 <!-- Copyright -->
                 <div class="section_footer__copyright">
+
                     &copy; <span id="js-current-year"></span> Touché. All rights reserved.
                 </div>
+                <br>
 
             </div>
         </div> <!-- / .row -->
