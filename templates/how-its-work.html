@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}
+{% trans 'How its work' %}
+{% endblock %}
+{% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+	<!-- HEADER
+	================================================== -->
+	<section class="section section_header" data-parallax="scroll" data-image-src="https://source.unsplash.com/5AMSZcgN_cM/1920x1080">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+
+					<!-- Heading -->
+					<h1 class="section__heading section_header__heading text-center">
+						{% trans 'How its work' %}
+					</h1>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+	<!-- INFO
+	================================================== -->
+	<section class="section section_info section_info_opposite section_no-padding_bottom">
+		<div class="container">
+
+			<div class="row align-items-justify">
+				<div class="col-md-6 order-md-3">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h1.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1 order-md-2"></div>
+				<div class="col-md-5 order-md-1">
+
+					<div class="section_info__body">
+						<h2 class="section__heading">
+							{% trans 'Step 1: Press "Get start"' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+	<section class="section section_info section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+			<div class="row align-items-justify">
+				<div class="col-md-6">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h2.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-5">
+
+					<div class="section_info__body">
+
+						<h2 class="section__heading">
+							{% trans 'Step 2: Enter username, password, company name and choose currency' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+    <section class="section section_info section_info_opposite section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+
+			<div class="row align-items-justify">
+				<div class="col-md-6 order-md-3">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h3.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1 order-md-2"></div>
+				<div class="col-md-5 order-md-1">
+
+					<div class="section_info__body">
+						<h2 class="section__heading">
+							{% trans 'Step 3: Click "Add Category"' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+	<section class="section section_info section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+			<div class="row align-items-justify">
+				<div class="col-md-6">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h4.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-5">
+
+					<div class="section_info__body">
+
+						<h2 class="section__heading">
+                            {% trans 'Step 4: Enter the category name and description' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+
+    <section class="section section_info section_info_opposite section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+
+			<div class="row align-items-justify">
+				<div class="col-md-6 order-md-3">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h5.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1 order-md-2"></div>
+				<div class="col-md-5 order-md-1">
+
+					<div class="section_info__body">
+						<h2 class="section__heading">
+							{% trans 'Step 5: Click "Add Product"' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+	<section class="section section_info section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+			<div class="row align-items-justify">
+				<div class="col-md-6">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h6.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-5">
+
+					<div class="section_info__body">
+
+						<h2 class="section__heading">
+							{% trans 'Step 6: Enter the product information' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+
+    <section class="section section_info section_info_opposite section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+
+			<div class="row align-items-justify">
+				<div class="col-md-6 order-md-3">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h7.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1 order-md-2"></div>
+				<div class="col-md-5 order-md-1">
+
+					<div class="section_info__body">
+						<h2 class="section__heading">
+							{% trans 'Step 7: Add another product or return to the category view' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+	<section class="section section_info section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+			<div class="row align-items-justify">
+				<div class="col-md-6">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h5.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-5">
+
+					<div class="section_info__body">
+
+						<h2 class="section__heading">
+							{% trans 'Step 8: Click "View Menu"' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+
+
+    <section class="section section_info section_info_opposite section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+
+			<div class="row align-items-justify">
+				<div class="col-md-6 order-md-3">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h8.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1 order-md-2"></div>
+				<div class="col-md-5 order-md-1">
+
+					<div class="section_info__body">
+						<h2 class="section__heading">
+							{% trans 'Step 9: Click "Get QR code"' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+	<section class="section section_info section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+			<div class="row align-items-justify">
+				<div class="col-md-6">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h9.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-5">
+
+					<div class="section_info__body">
+
+						<h2 class="section__heading">
+							{% trans 'Step 10: Choose a subscription plan' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+        <section class="section section_info section_info_opposite section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+
+			<div class="row align-items-justify">
+				<div class="col-md-6 order-md-3">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h10.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1 order-md-2"></div>
+				<div class="col-md-5 order-md-1">
+
+					<div class="section_info__body">
+						<h2 class="section__heading">
+							{% trans 'Step 11: Enter your billing information' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+	<section class="section section_info section_no-padding_top section_no-padding_bottom">
+		<div class="container">
+			<div class="row align-items-justify">
+				<div class="col-md-6">
+
+					<div class="section_info__img">
+						<img src="{{ STATIC_URL }}{{ LANGUAGE_CODE }}/h11.png" alt="...">
+					</div>
+
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-5">
+
+					<div class="section_info__body">
+
+						<h2 class="section__heading">
+							{% trans 'Step 12: Finally' %}
+						</h2>
+
+					</div>
+
+				</div>
+			</div> <!-- / .row -->
+		</div> <!-- / .container -->
+	</section>
+
+
+
+
+
+{% endblock %}

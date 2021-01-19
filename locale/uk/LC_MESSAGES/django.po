@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: templates/contact-us.html:46
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-15 18:28+0200\n"
+"POT-Creation-Date: 2021-01-19 20:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,15 +21,15 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: QrCodeMenu/settings.py:110
+#: QrCodeMenu/settings.py:111
 msgid "English"
 msgstr ""
 
-#: QrCodeMenu/settings.py:111
+#: QrCodeMenu/settings.py:112
 msgid "Russia"
 msgstr ""
 
-#: QrCodeMenu/settings.py:112
+#: QrCodeMenu/settings.py:113
 msgid "Ukraine"
 msgstr ""
 
@@ -97,17 +96,136 @@ msgstr "Введіть той самий пароль, для перевірки
 msgid "Company name"
 msgstr "Назва закладу"
 
-#: templates/about-us.html:17 templates/base.html:102 templates/base.html:127
+#: templates/about-us.html:17 templates/base.html:111 templates/base.html:136
 msgid "About Us"
 msgstr "Про нас"
 
-#: templates/about-us.html:175 templates/contact-us.html:4
+#: templates/about-us.html:34
+msgid "Say goodbye to physical price lists and say hello to QR code!"
+msgstr "Попрощайтеся з фізичними прайс-листами і привітайтеся з QR-кодом!"
+
+#: templates/about-us.html:50
+msgid "Save on printing costs"
+msgstr "Заощаджуйте на витратах на друк"
+
+#: templates/about-us.html:51
+msgid ""
+"Paper price lists are subject to wear and tear. Sometimes drinks or sauces "
+"are spilled on them smeared all over the menu lid. Unsurprisingly, paper "
+"menu printing actually eats up your profit. But with a QR code replacing the "
+"physical price list, you only need to print the code on surfaces where it is "
+"easily accessible, such as on your restaurant wall, in a window, on a door "
+"or even on the table itself. But what if you need to change the menu?"
+msgstr ""
+"Паперові прайс-листи швидко підлягають зносу. Іноді напої або соуси "
+"розливаються та розмазуються по всій кришці меню. Не дивно що друковане "
+"меню, насправді, з'їдає ваш прибуток. З QR-кодом, який замінює фізичний "
+"прайс-лист, Вам потрібно лише надрукувати код на поверхнях, де він є "
+"легкодоступним, наприклад, на стіні ресторану, у вікні, дверях або навіть на "
+"самому столі. Але що робити у випадку, коли в процесі використання Вам "
+"потрібно змінити вже створене меню?"
+
+#: templates/about-us.html:54
+msgid "Easily replaceable without reprinting"
+msgstr "Легко замінюється без передруку"
+
+#: templates/about-us.html:55
+msgid ""
+"To change the price list, all you have to do is change the product or "
+"category, not even retyping a new QR code. Thats right, a QR code is a "
+"dynamic QR code form where you you can easily replace and edit its content "
+"whenever you want. There are absolutely no restrictions on how many times "
+"you can change the price list in just a few clicks. Now you, finally, you "
+"can create a seasonal menu that changes every 3 months to keep customers "
+"coming back again and again."
+msgstr ""
+"Щоб змінити прайс-лист, потрібно лише змінити товар або категорію, навіть не "
+"вводячи новий QR-код. Правильно, QR-код - це незмінне посилання, де Ви "
+"можете легко замінити та відредагувати його зміст коли завгодно. Прайс-лист "
+"змінюється лише в кілька кліків. Немає жодних обмежень щодо кількості разів "
+"змін. Тепер Ви, нарешті, зможете створити сезонне меню, яке оновлюється "
+"кожні 3 місяці, щоб утримати клієнтів повертатися знову і знову."
+
+#: templates/about-us.html:73
+msgid ""
+"Ideal tool for restaurants, cafes, bars and other types of businesses to "
+"provide your customers with an attractive QR price list"
+msgstr ""
+"Ідеальний інструмент для ресторанів, кафе, барів, фаст-фудів та інших видів "
+"бізнесу. Забезпечте привабливе QR-меню для Ваших клієнтів."
+
+#: templates/about-us.html:90
+msgid "Update on the fly"
+msgstr "Оновлення на льоту"
+
+#: templates/about-us.html:91
+msgid ""
+"How many times have you sold a dish or no longer offered specials printed in "
+"price list? We know that updating a price list is time consuming and "
+"expensive. Thats why QR code is perfect suitable for updating the sheet in "
+"real time. No need to tell clients anymore: \"Sorry, its sold out!\""
+msgstr ""
+"Скільки разів Ви розпродавали страви або більше не пропонували сезонні "
+"пропозиції, надруковані в прайс-листі? Ми знаємо, що оновлення прейскуранта "
+"займає багато часу і обходиться дорого. Тому QR-код ідеально підходить для "
+"оновлення прайс-листа в реальному часі. Більше не потрібно повідомляти "
+"клієнтам: “Вибачте, його розпродали!“"
+
+#: templates/about-us.html:95
+msgid "Grab attention with images"
+msgstr "Привертайте увагу зображеннями"
+
+#: templates/about-us.html:96
+msgid ""
+"Most do not add images to their price list because high-quality printing "
+"images on paper cost money. But with the QR code you can download your "
+"digital price list from mouth-watering images to keep customers happy. "
+"Moreover, they can see and accept solution based on the images they see to "
+"streamline the ordering process."
+msgstr ""
+"Більшість закладів не додають зображення до свого прайс-листа, оскільки "
+"якісний друк зображень коштує додаткових грошей. Але за допомогою QR-коду Ви "
+"можете завантажити свій цифровий прайс-лист з фото, аби забезпечити клієнтів "
+"більш повною інформацією. Більше того, вони можуть бачити і прийняти рішення "
+"на основі зображення страв, які вони бачать в процесі замовлення."
+
+#: templates/about-us.html:121
+msgid "Behind the scenes"
+msgstr "Закулісся розробки"
+
+#: templates/about-us.html:126
+msgid ""
+"Our team is working to stop using paper in the creation of price lists in "
+"the future. Thus, help nature."
+msgstr ""
+"Ми дбаємо про  припинення використання паперу для створення прайс-листів. "
+"Таким чином, ми допомагаємо природі."
+
+#: templates/about-us.html:144
+msgid ""
+"Our team is working to ensure that you can provide a price list of your "
+"services at any time regardless of location and accessible by QR code"
+msgstr ""
+"Наша команда працює над тим, щоб Ви могли надавать клієнтам доступний за QR- "
+"кодом прайс-лист своїх послуг у будь-який час, незалежно від "
+"місцезнаходження."
+
+#: templates/about-us.html:147
+msgid ""
+"If you have any questions related to the operation of the service, you can "
+"contact us."
+msgstr ""
+"Якщо у вас з’являться питання, пов‘язані з роботою сервісу, Ви можете "
+"зв‘язатися з нами."
+
+#: templates/about-us.html:152 templates/contact-us.html:4
 #: templates/contact-us.html:18
 msgid "Contact Us"
 msgstr "Зв'язатися з нами"
 
 #: templates/add_category.html:4 templates/add_category.html:18
-#: templates/add_category.html:39 templates/category_view.html:37
+#: templates/add_category.html:29 templates/add_category.html:39
+#: templates/category_view.html:37
 msgid "Add category"
 msgstr "Додати категорію"
 
@@ -125,11 +243,6 @@ msgstr "Головна"
 msgid "Category"
 msgstr "Категорії"
 
-#: templates/add_category.html:29 templates/edit_category.html:4
-#: templates/edit_category.html:18 templates/edit_category.html:29
-msgid "Edit category"
-msgstr "Редагувати категорію"
-
 #: templates/add_product.html:4 templates/add_product.html:29
 #: templates/add_product.html:40 templates/category-detail.html:33
 #: templates/category_view.html:58
@@ -140,73 +253,76 @@ msgstr "Додати продукт"
 msgid "Add product to"
 msgstr "Додати продукт до"
 
-#: templates/base.html:52
+#: templates/base.html:57
 msgid "News & Events"
 msgstr "Новини & Події"
 
-#: templates/base.html:55
+#: templates/base.html:60 templates/how-its-work.html:4
+#: templates/how-its-work.html:17
 msgid "How its work"
 msgstr "Як це працює"
 
-#: templates/base.html:58 templates/base.html:175 templates/example_menu.html:4
+#: templates/base.html:63 templates/base.html:184 templates/example_menu.html:4
 #: templates/example_menu.html:16
 msgid "Example menu"
 msgstr "Приклад меню"
 
-#: templates/base.html:75 templates/base.html:79 templates/profile.html:19
+#: templates/base.html:84 templates/base.html:88 templates/profile.html:19
 msgid "Profile"
 msgstr "Профіль"
 
-#: templates/base.html:81 templates/edit-customer.html:4
+#: templates/base.html:90 templates/edit-customer.html:4
 #: templates/edit-customer.html:19
 msgid "Edit profile"
 msgstr "Редагувати профіль"
 
-#: templates/base.html:83
+#: templates/base.html:92
 msgid "Your category"
 msgstr "Ваші категорії"
 
-#: templates/base.html:85 templates/product_view.html:27
+#: templates/base.html:94 templates/product_view.html:27
 #: templates/profile.html:98
 msgid "Menu preview"
 msgstr "Меню"
 
-#: templates/base.html:87 templates/home.html:5
+#: templates/base.html:96 templates/home.html:5
 msgid "Payments"
 msgstr "Платежі"
 
-#: templates/base.html:89
+#: templates/base.html:98
 msgid "Download QR code"
 msgstr "Завантажити QR код"
 
-#: templates/base.html:91
+#: templates/base.html:100
 msgid "Log out"
 msgstr "Вийти"
 
-#: templates/base.html:97 templates/registration/login.html:4
+#: templates/base.html:106 templates/registration/login.html:4
 #: templates/registration/login.html:16 templates/registration/login.html:40
 msgid "Sign in"
 msgstr "Увійти"
 
-#: templates/base.html:105
+#: templates/base.html:114
 msgid "Contact"
 msgstr "Контакти"
 
-#: templates/base.html:130
+#: templates/base.html:139
 msgid ""
 "Ideal tool for restaurants, cafes, bars, fast food to provide an attractive "
 "QR menu for your  clients"
-msgstr "Ідеальний інструмент для ресторанів, кафе, барів, фаст-фудів, щоб забезпечити привабливе QR-меню для ваших клієнтів"
+msgstr ""
+"Ідеальний інструмент для ресторанів, кафе, барів, фаст-фудів. Забезпечте "
+"привабливе QR-меню для ваших клієнтів."
 
-#: templates/base.html:138
+#: templates/base.html:147
 msgid "Contact info"
 msgstr "Контактна інформація"
 
-#: templates/base.html:142 templates/index.html:81
+#: templates/base.html:151 templates/contact-us.html:57 templates/index.html:81
 msgid "Kharkiv, Ukraine, 61000"
 msgstr "Харків, Україна, 61000"
 
-#: templates/base.html:168
+#: templates/base.html:177
 msgid "Change language"
 msgstr "Змінити мову"
 
@@ -232,11 +348,15 @@ msgstr "Переглянути меню"
 
 #: templates/comming_soon.html:16
 msgid "Comming soon"
-msgstr ""
+msgstr "Скоро"
 
 #: templates/contact-us.html:38 templates/contact-us.html:132
 msgid "Write us"
 msgstr "Напишіть нам"
+
+#: templates/contact-us.html:46
+msgid "Сall us"
+msgstr "Зателефонуйте нам"
 
 #: templates/contact-us.html:54 templates/contact-us.html:148
 msgid "Visit us"
@@ -279,12 +399,17 @@ msgstr "Відправити"
 msgid "Save"
 msgstr "Зберігти"
 
+#: templates/edit_category.html:4 templates/edit_category.html:18
+#: templates/edit_category.html:29
+msgid "Edit category"
+msgstr "Редагувати категорію"
+
 #: templates/edit_product.html:4 templates/edit_product.html:18
 #: templates/edit_product.html:29
 msgid "Edit product"
 msgstr "Редагувати продукт"
 
-#: templates/example_menu.html:32 templates/product_view.html:37
+#: templates/example_menu.html:32
 msgid "Browse by categories"
 msgstr "Категорії"
 
@@ -320,13 +445,73 @@ msgstr "Відмінити підписку"
 msgid "Monthly"
 msgstr "Щомісячна"
 
-#: templates/home.html:57 templates/home.html:75
+#: templates/home.html:52 templates/home.html:69
+msgid "Access to the price list by QR code"
+msgstr "Доступ до прайс-листу за допомогою QR коду "
+
+#: templates/home.html:53 templates/home.html:70
+msgid "Access to the price list"
+msgstr "доступ до прайс-листу"
+
+#: templates/home.html:54 templates/home.html:71
+msgid "Help center access"
+msgstr "Служба підтримки"
+
+#: templates/home.html:56 templates/home.html:73
 msgid "Get started"
 msgstr "Розпочати"
 
-#: templates/home.html:65
+#: templates/home.html:64
 msgid "Yearly"
 msgstr "Щорічна"
+
+#: templates/how-its-work.html:43
+msgid "Step 1: Press \"Get start\""
+msgstr "Крок 1: Натисніть \"Розпочати\""
+
+#: templates/how-its-work.html:69
+msgid "Step 2: Enter username, password, company name and choose currency"
+msgstr "Крок 2: Введіть ім'я користувача, пароль, назву компанії та виберіть валюту"
+
+#: templates/how-its-work.html:95
+msgid "Step 3: Click \"Add Category\""
+msgstr "Крок 3: Натисніть \"Додати категорію\""
+
+#: templates/how-its-work.html:121
+msgid "Step 4: Enter the category name and description"
+msgstr "Крок 4: Введіть назву категорії та її опис"
+
+#: templates/how-its-work.html:148
+msgid "Step 5: Click \"Add Product\""
+msgstr "Крок 5: Натисніть \"Додати продукт\""
+
+#: templates/how-its-work.html:174
+msgid "Step 6: Enter the product information"
+msgstr "Крок 6: Введіть інформацію про продукт"
+
+#: templates/how-its-work.html:201
+msgid "Step 7: Add another product or return to the category view"
+msgstr "Крок 7: Додайте ще один продукт чи поверніться до перегляду категорій"
+
+#: templates/how-its-work.html:227
+msgid "Step 8: Click \"View Menu\""
+msgstr "Крок 8: Натисніть \"Переглянути меню\""
+
+#: templates/how-its-work.html:255
+msgid "Step 9: Click \"Get QR code\""
+msgstr "Крок 9: Натисніть \"Отримати QR код\""
+
+#: templates/how-its-work.html:281
+msgid "Step 10: Choose a subscription plan"
+msgstr "Крок 10: Виберіть план підписки"
+
+#: templates/how-its-work.html:307
+msgid "Step 11: Enter your billing information"
+msgstr "Крок 11: Введіть платіжну інформацію"
+
+#: templates/how-its-work.html:333
+msgid "Step 12: Finally"
+msgstr "Крок 12: Ось і все"
 
 #: templates/index.html:23
 msgid "QR code menu"
@@ -359,12 +544,6 @@ msgstr "Упс... ваш улюбленний заклад мабуть забу
 #: templates/product_view.html:17
 msgid "Menu"
 msgstr "Меню"
-
-#: templates/product_view.html:40
-msgid ""
-"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione numquam "
-"eos perferendis itaque hic unde, ad, laudantium minima."
-msgstr ""
 
 #: templates/profile.html:4
 msgid "Profile user"
@@ -427,10 +606,6 @@ msgstr "Введіть назву компанії що буду відобра�
 #: templates/registration/sign_up.html:43
 msgid "Select currency that will be displayed to your clients"
 msgstr "Виберіть валюту, що буде відображатися для ваших клієнтів"
-
-#: templates/sp.html:18
-msgid "menu"
-msgstr "меню"
 
 #: templates/success.html:4 templates/success.html:15
 msgid "You have successfully subscribed!"
@@ -1629,3 +1804,6 @@ msgstr ""
 #, python-format
 msgid "\"%(value)s\" value must be valid JSON."
 msgstr ""
+
+#~ msgid "menu"
+#~ msgstr "меню"

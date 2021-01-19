@@ -50,12 +50,12 @@
                             <a href="{% url 'category_detail' category.id %}"><h5
                                     class="card-title">{{ category.name }}</h5></a>
                             <p class="card-text">{{ category.description }}</p>
-                            <a href="{% url 'edit_category' category.id %}" class="btn btn-primary"><i
+                            <a href="{% url 'edit_category' category.id %}" class="btn btn-primary" style="font-size: 0.5em;"><i
                                     class="fas fa-edit"></i></a>
 
-                            <a href="{% url 'delete_category' category.id %}" class="btn btn-primary">
+                            <a href="{% url 'delete_category' category.id %}" style="font-size: 0.5em;" class="btn btn-primary">
                                 <i class="fas fa-trash"></i></a>
-                            <a href="{% url 'add_product' category.id %}" class="btn btn-primary">{% trans 'Add product' %}</a>
+                            <a href="{% url 'add_product' category.id %}" style="font-size: 0.5em;" class="btn btn-primary">{% trans 'Add product' %}</a>
 
                         </div>
                     </div>

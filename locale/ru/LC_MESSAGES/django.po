@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: templates/contact-us.html:46
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-15 18:28+0200\n"
+"POT-Creation-Date: 2021-01-19 20:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +20,15 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: QrCodeMenu/settings.py:110
+#: QrCodeMenu/settings.py:111
 msgid "English"
 msgstr ""
 
-#: QrCodeMenu/settings.py:111
+#: QrCodeMenu/settings.py:112
 msgid "Russia"
 msgstr ""
 
-#: QrCodeMenu/settings.py:112
+#: QrCodeMenu/settings.py:113
 msgid "Ukraine"
 msgstr ""
 
@@ -63,11 +62,13 @@ msgstr "Пароль"
 
 #: mainapp/forms.py:77
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-msgstr "Необходимые. 150 символов или меньше. Только буквы, цифры и @ /. / + / - / _."
+msgstr ""
+"Необходимые. 150 символов или меньше. Только буквы, цифры и @ /. / + / - / _."
 
 #: mainapp/forms.py:84
 msgid "Your password can’t be too similar to your other personal information."
-msgstr "Ваш пароль не может быть слишком похож на вашу другую личную информацию."
+msgstr ""
+"Ваш пароль не может быть слишком похож на вашу другую личную информацию."
 
 #: mainapp/forms.py:85
 msgid "Your password must contain at least 8 characters."
@@ -93,17 +94,137 @@ msgstr "Подтвердите пароль, для проверки."
 msgid "Company name"
 msgstr "Название компании"
 
-#: templates/about-us.html:17 templates/base.html:102 templates/base.html:127
+#: templates/about-us.html:17 templates/base.html:111 templates/base.html:136
 msgid "About Us"
 msgstr "О нас"
 
-#: templates/about-us.html:175 templates/contact-us.html:4
+#: templates/about-us.html:34
+msgid "Say goodbye to physical price lists and say hello to QR code!"
+msgstr "Попрощайтесь с физическими прайс-листами и поздоровайтесь с QR-кодом!"
+
+#: templates/about-us.html:50
+msgid "Save on printing costs"
+msgstr "Экономьте на расходах на печать"
+
+#: templates/about-us.html:51
+msgid ""
+"Paper price lists are subject to wear and tear. Sometimes drinks or sauces "
+"are spilled on them smeared all over the menu lid. Unsurprisingly, paper "
+"menu printing actually eats up your profit. But with a QR code replacing the "
+"physical price list, you only need to print the code on surfaces where it is "
+"easily accessible, such as on your restaurant wall, in a window, on a door "
+"or even on the table itself. But what if you need to change the menu?"
+msgstr ""
+"Бумажные прайс-листы быстро подлежат износу. Иногда напитки или соусы "
+"разливаются и размазываются по всей крышке меню. Неудивительно что печатное "
+"меню, на самом деле, съедает вашу прибыль. С QR-кодом, который заменяет "
+"физический прайс-лист, вам нужно лишь напечатать код на поверхностях, где он "
+"является легкодоступным, например, на стене ресторана, в окне, двери или "
+"даже на самом столе. Но что делать в случае, когда в процессе использования "
+"вам нужно изменить уже созданное меню?"
+
+#: templates/about-us.html:54
+msgid "Easily replaceable without reprinting"
+msgstr "Легко заменяется без перепечатки"
+
+#: templates/about-us.html:55
+msgid ""
+"To change the price list, all you have to do is change the product or "
+"category, not even retyping a new QR code. Thats right, a QR code is a "
+"dynamic QR code form where you you can easily replace and edit its content "
+"whenever you want. There are absolutely no restrictions on how many times "
+"you can change the price list in just a few clicks. Now you, finally, you "
+"can create a seasonal menu that changes every 3 months to keep customers "
+"coming back again and again."
+msgstr ""
+"Чтобы изменить прайс-лист, нужно лишь изменить товар или категорию, даже не "
+"вводя новый QR-код. Правильно, QR-код - это неизменное ссылки, где вы можете "
+"легко заменить и отредактировать его содержание когда угодно. Прайс-лист "
+"меняется лишь в несколько кликов. Нет никаких ограничений по количеству раз "
+"изменений. Теперь вы, наконец, сможете создать сезонное меню, которое "
+"обновляется каждые 3 месяца, чтобы удержать клиентов возвращаться снова и "
+"снова."
+
+#: templates/about-us.html:73
+msgid ""
+"Ideal tool for restaurants, cafes, bars and other types of businesses to "
+"provide your customers with an attractive QR price list"
+msgstr ""
+"Ідеальний інструмент для ресторанів, кафе, барів, фаст-фудів та інших видів "
+"бізнесу. Забезпечте привабливе QR-меню для ваших клієнтів."
+
+#: templates/about-us.html:90
+msgid "Update on the fly"
+msgstr "Обновление на лету"
+
+#: templates/about-us.html:91
+msgid ""
+"How many times have you sold a dish or no longer offered specials printed in "
+"price list? We know that updating a price list is time consuming and "
+"expensive. Thats why QR code is perfect suitable for updating the sheet in "
+"real time. No need to tell clients anymore: \"Sorry, its sold out!\""
+msgstr ""
+"Сколько раз вы распродавали блюда или больше не предлагали сезонные "
+"предложения, напечатанные в прайс-листе? Мы знаем, что обновление "
+"прейскуранта занимает много времени и обходится дорого. Поэтому QR-код "
+"идеально подходит для обновления прайс-листа в реальном времени. Больше не "
+"нужно сообщать клиентам: “Извините, его распродали!“"
+
+#: templates/about-us.html:95
+msgid "Grab attention with images"
+msgstr "Привлекайте внимание изображениями"
+
+#: templates/about-us.html:96
+msgid ""
+"Most do not add images to their price list because high-quality printing "
+"images on paper cost money. But with the QR code you can download your "
+"digital price list from mouth-watering images to keep customers happy. "
+"Moreover, they can see and accept solution based on the images they see to "
+"streamline the ordering process."
+msgstr ""
+"Большинство заведений не добавляют изображения в свой прайс-лист, поскольку "
+"качественная печать изображений стоит дополнительных денег. Но при помощи QR "
+"кода вы можете скачать свой цифровой прайс-лист с фото, чтобы обеспечить "
+"клиентов более полной информацией. Более того, они могут видеть и принимать "
+"решения на основе изображения блюд, которые они видят в процессе заказа."
+
+#: templates/about-us.html:121
+msgid "Behind the scenes"
+msgstr "Закулисье разработки"
+
+#: templates/about-us.html:126
+msgid ""
+"Our team is working to stop using paper in the creation of price lists in "
+"the future. Thus, help nature."
+msgstr ""
+"Мы заботимся о прекращении использования бумаги для создания прайс-листов. "
+"Таким образом, мы помогаем природе."
+
+#: templates/about-us.html:144
+msgid ""
+"Our team is working to ensure that you can provide a price list of your "
+"services at any time regardless of location and accessible by QR code"
+msgstr ""
+"Наша команда работает над тем, чтобы вы могли надавать клиентам доступен по "
+"QR - коду прайс-лист своих услуг в любое время, независимо от "
+"местонахождения."
+
+#: templates/about-us.html:147
+msgid ""
+"If you have any questions related to the operation of the service, you can "
+"contact us."
+msgstr ""
+"Если у вас появятся вопросы, связанные с работой сервиса, вы можете "
+"связаться с нами."
+
+#: templates/about-us.html:152 templates/contact-us.html:4
 #: templates/contact-us.html:18
 msgid "Contact Us"
 msgstr "Контакты"
 
 #: templates/add_category.html:4 templates/add_category.html:18
-#: templates/add_category.html:39 templates/category_view.html:37
+#: templates/add_category.html:29 templates/add_category.html:39
+#: templates/category_view.html:37
 msgid "Add category"
 msgstr "Добавить категорию"
 
@@ -121,11 +242,6 @@ msgstr "Главная"
 msgid "Category"
 msgstr "Ваши категории"
 
-#: templates/add_category.html:29 templates/edit_category.html:4
-#: templates/edit_category.html:18 templates/edit_category.html:29
-msgid "Edit category"
-msgstr "Изменить категорию"
-
 #: templates/add_product.html:4 templates/add_product.html:29
 #: templates/add_product.html:40 templates/category-detail.html:33
 #: templates/category_view.html:58
@@ -136,73 +252,76 @@ msgstr "Добавить продукт"
 msgid "Add product to"
 msgstr "Добавить продукт в"
 
-#: templates/base.html:52
+#: templates/base.html:57
 msgid "News & Events"
 msgstr "Новости & События"
 
-#: templates/base.html:55
+#: templates/base.html:60 templates/how-its-work.html:4
+#: templates/how-its-work.html:17
 msgid "How its work"
 msgstr "Как это работает"
 
-#: templates/base.html:58 templates/base.html:175 templates/example_menu.html:4
+#: templates/base.html:63 templates/base.html:184 templates/example_menu.html:4
 #: templates/example_menu.html:16
 msgid "Example menu"
 msgstr "Пример меню"
 
-#: templates/base.html:75 templates/base.html:79 templates/profile.html:19
+#: templates/base.html:84 templates/base.html:88 templates/profile.html:19
 msgid "Profile"
 msgstr "Профиль"
 
-#: templates/base.html:81 templates/edit-customer.html:4
+#: templates/base.html:90 templates/edit-customer.html:4
 #: templates/edit-customer.html:19
 msgid "Edit profile"
 msgstr "Редактировать профиль"
 
-#: templates/base.html:83
+#: templates/base.html:92
 msgid "Your category"
 msgstr "Ваши категории"
 
-#: templates/base.html:85 templates/product_view.html:27
+#: templates/base.html:94 templates/product_view.html:27
 #: templates/profile.html:98
 msgid "Menu preview"
 msgstr "Посмотреть меню"
 
-#: templates/base.html:87 templates/home.html:5
+#: templates/base.html:96 templates/home.html:5
 msgid "Payments"
 msgstr "Платежи"
 
-#: templates/base.html:89
+#: templates/base.html:98
 msgid "Download QR code"
 msgstr "Скачать QR код"
 
-#: templates/base.html:91
+#: templates/base.html:100
 msgid "Log out"
 msgstr "Выйти"
 
-#: templates/base.html:97 templates/registration/login.html:4
+#: templates/base.html:106 templates/registration/login.html:4
 #: templates/registration/login.html:16 templates/registration/login.html:40
 msgid "Sign in"
 msgstr "Войти"
 
-#: templates/base.html:105
+#: templates/base.html:114
 msgid "Contact"
 msgstr "Контакты"
 
-#: templates/base.html:130
+#: templates/base.html:139
 msgid ""
 "Ideal tool for restaurants, cafes, bars, fast food to provide an attractive "
 "QR menu for your  clients"
-msgstr "Идеальный инструмент для ресторанов, кафе, баров, фаст-фудов, чтобы предоставить вашим клиентам привлекательное QR-меню"
+msgstr ""
+"Идеальный инструмент для ресторанов, кафе, баров, фаст-фудов, чтобы "
+"предоставить вашим клиентам привлекательное QR-меню"
 
-#: templates/base.html:138
+#: templates/base.html:147
 msgid "Contact info"
 msgstr "Контактна информация"
 
-#: templates/base.html:142 templates/index.html:81
+#: templates/base.html:151 templates/contact-us.html:57 templates/index.html:81
 msgid "Kharkiv, Ukraine, 61000"
 msgstr "Харьков, Украина, 61000"
 
-#: templates/base.html:168
+#: templates/base.html:177
 msgid "Change language"
 msgstr "Сменить язык"
 
@@ -233,6 +352,10 @@ msgstr "Скоро"
 #: templates/contact-us.html:38 templates/contact-us.html:132
 msgid "Write us"
 msgstr "Напишите нам"
+
+#: templates/contact-us.html:46
+msgid "Сall us"
+msgstr "Позвоните нам"
 
 #: templates/contact-us.html:54 templates/contact-us.html:148
 msgid "Visit us"
@@ -275,12 +398,17 @@ msgstr "Отправить"
 msgid "Save"
 msgstr "Сохранить"
 
+#: templates/edit_category.html:4 templates/edit_category.html:18
+#: templates/edit_category.html:29
+msgid "Edit category"
+msgstr "Изменить категорию"
+
 #: templates/edit_product.html:4 templates/edit_product.html:18
 #: templates/edit_product.html:29
 msgid "Edit product"
 msgstr "Редактировать продукт"
 
-#: templates/example_menu.html:32 templates/product_view.html:37
+#: templates/example_menu.html:32
 msgid "Browse by categories"
 msgstr "Просмотр"
 
@@ -316,13 +444,74 @@ msgstr "Отменить подписку"
 msgid "Monthly"
 msgstr "Ежемесячно"
 
-#: templates/home.html:57 templates/home.html:75
+#: templates/home.html:52 templates/home.html:69
+msgid "Access to the price list by QR code"
+msgstr "Доступ к прайс-листу по QR коду"
+
+#: templates/home.html:53 templates/home.html:70
+msgid "Access to the price list"
+msgstr "Доступ к прайсл-листу"
+
+#: templates/home.html:54 templates/home.html:71
+msgid "Help center access"
+msgstr "Служба поддержки"
+
+#: templates/home.html:56 templates/home.html:73
 msgid "Get started"
 msgstr "Создать"
 
-#: templates/home.html:65
+#: templates/home.html:64
 msgid "Yearly"
 msgstr "Ежегодично"
+
+#: templates/how-its-work.html:43
+msgid "Step 1: Press \"Get start\""
+msgstr "Шаг 1: Нажмите \"Создать\" "
+
+#: templates/how-its-work.html:69
+msgid "Step 2: Enter username, password, company name and choose currency"
+msgstr ""
+"Шаг 2: Введите имя пользователя, пароль, название компании и выберите валюту"
+
+#: templates/how-its-work.html:95
+msgid "Step 3: Click \"Add Category\""
+msgstr "Шаг 3: нажмите \"Добавить категорию\""
+
+#: templates/how-its-work.html:121
+msgid "Step 4: Enter the category name and description"
+msgstr "Шаг 4: Введите название категории и описание"
+
+#: templates/how-its-work.html:148
+msgid "Step 5: Click \"Add Product\""
+msgstr "Шаг 5: Нажмите\"Добавить продукт\""
+
+#: templates/how-its-work.html:174
+msgid "Step 6: Enter the product information"
+msgstr "Шаг 6: Введите информацию о продукте"
+
+#: templates/how-its-work.html:201
+msgid "Step 7: Add another product or return to the category view"
+msgstr "Шаг 7: Добавьте еще один продукт или вернитесь к просмотру категорий"
+
+#: templates/how-its-work.html:227
+msgid "Step 8: Click \"View Menu\""
+msgstr "Шаг 8: Нажмите \"Просмотр меню\""
+
+#: templates/how-its-work.html:255
+msgid "Step 9: Click \"Get QR code\""
+msgstr "Шаг 9: Нажмите\"Получить QR код\""
+
+#: templates/how-its-work.html:281
+msgid "Step 10: Choose a subscription plan"
+msgstr "Шаг 10: Выберите план подписки"
+
+#: templates/how-its-work.html:307
+msgid "Step 11: Enter your billing information"
+msgstr "Шаг 11: Введите платежную информацию"
+
+#: templates/how-its-work.html:333
+msgid "Step 12: Finally"
+msgstr "Шаг 12: Вот и все"
 
 #: templates/index.html:23
 msgid "QR code menu"
@@ -355,12 +544,6 @@ msgstr "Упс... Ваш любимое заведение, похоже, заб
 #: templates/product_view.html:17
 msgid "Menu"
 msgstr "Меню"
-
-#: templates/product_view.html:40
-msgid ""
-"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione numquam "
-"eos perferendis itaque hic unde, ad, laudantium minima."
-msgstr ""
 
 #: templates/profile.html:4
 msgid "Profile user"
@@ -424,10 +607,6 @@ msgstr ""
 #: templates/registration/sign_up.html:43
 msgid "Select currency that will be displayed to your clients"
 msgstr "Выберите валюту, которая будет отображаться для ваших клиентов"
-
-#: templates/sp.html:18
-msgid "menu"
-msgstr "меню"
 
 #: templates/success.html:4 templates/success.html:15
 msgid "You have successfully subscribed!"
@@ -1626,6 +1805,9 @@ msgstr ""
 #, python-format
 msgid "\"%(value)s\" value must be valid JSON."
 msgstr ""
+
+#~ msgid "menu"
+#~ msgstr "меню"
 
 #~ msgid "Edit product in"
 #~ msgstr "Редактировать продукт в"

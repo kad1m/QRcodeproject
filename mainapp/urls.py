@@ -32,4 +32,5 @@ urlpatterns = [
     path('download/', DownloadQR.as_view(), name='download'),
     path('example-menu/', example_menu, name='example_menu'),
     path('comming-soon/', comming_soon, name='comming_soon'),
+
 ]

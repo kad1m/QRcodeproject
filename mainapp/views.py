@@ -440,8 +440,10 @@ def stripe_webhook(request):
         )
     except ValueError as e:
         # Invalid payload
+        print('1   '+e)
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
+        print('2  ' + e)
         # Invalid signature
         return HttpResponse(status=400)
 
@@ -453,10 +455,9 @@ def stripe_webhook(request):
         client_reference_id = session.get('client_reference_id')
         stripe_customer_id = session.get('customer')
         stripe_subscription_id = session.get('subscription')
-        print(stripe_customer_id, stripe_subscription_id)
         # Get the user and create a new StripeCustomer
         user = User.objects.get(id=client_reference_id)
-        print(user)
+
         customer = Customer.objects.get(user=user)
         customer.stripeCustomerId = stripe_customer_id
         customer.stripeSubscriptionId = stripe_subscription_id
@@ -518,7 +519,7 @@ def contact_us(request):
 
 
 def how_it_work(request):
-    return render(request, 'gallery.html')
+    return render(request, 'how-its-work.html')
 
 
 def example_menu(request):

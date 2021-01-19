@@ -31,8 +31,7 @@
 
                     <!-- Description -->
                     <p class="section_discover__description">
-                        Попрощайтесь с физическим меню и поздоровайтесь с QR-кодами!
-                    </p>
+                        {% trans 'Say goodbye to physical price lists and say hello to QR code!' %}
                     </p>
 
                 </div>
@@ -40,30 +39,20 @@
 
                     <!-- Image -->
                     <div class="section_discover__img">
-                        <img src="{% static 'assets/img/2.jpg' %}" class="img-fluid" alt="...">
+                        <img src="{% static 'about2.jpg' %}" class="img-fluid" alt="...">
                     </div>
 
                 </div>
                 <div class="col-md-6 align-self-center">
 
                     <!-- Content -->
-                    <h2><em>Lorem ipsum</em> dolor sit amet</h2>
                     <p>
-                    <h3>Экономьте на расходах на печать</h3>
-                    Меню часто разделяют, что приводит к износу. Иногда на них проливаются напитки или соусы
-                    размазываются по всей крышке меню. Неудивительно, что печать меню из бумаги на самом деле съедает
-                    вашу прибыль . Но с QR-кодом PDF, заменяющим физическое меню, вам нужно только распечатать код на
-                    поверхностях, где он легко доступен, например, на стене вашего ресторана, в окне, на двери или даже
-                    на самом столе. Но что, если вам нужно изменить меню?
+                    <h3>{% trans 'Save on printing costs' %}</h3>
+                    {% trans 'Paper price lists are subject to wear and tear. Sometimes drinks or sauces are spilled on them smeared all over the menu lid. Unsurprisingly, paper menu printing actually eats up your profit. But with a QR code replacing the physical price list, you only need to print the code on surfaces where it is easily accessible, such as on your restaurant wall, in a window, on a door or even on the table itself. But what if you need to change the menu?' %}
                     </p>
                     <p>
-                    <h3>Легко заменяется без перепечатки</h3>
-                    Чтобы изменить меню, все, что вам нужно сделать, это загрузить новый файл в QR-код, даже не
-                    перепечатывая новый QR-код. Правильно, QR-код PDF - это форма динамического QR-кода, в которой вы
-                    можете легко заменять и редактировать его содержимое, когда захотите. Нет абсолютно никаких
-                    ограничений на то, сколько раз вы можете изменить меню всего за несколько кликов. Теперь вы,
-                    наконец, можете создать сезонное меню, которое меняется каждые 3 месяца, чтобы клиенты возвращались
-                    снова и снова.
+                    <h3>{% trans 'Easily replaceable without reprinting' %}</h3>
+                    {% trans 'To change the price list, all you have to do is change the product or category, not even retyping a new QR code. Thats right, a QR code is a dynamic QR code form where you you can easily replace and edit its content whenever you want. There are absolutely no restrictions on how many times you can change the price list in just a few clicks. Now you, finally, you can create a seasonal menu that changes every 3 months to keep customers coming back again and again.' %}
                     </p>
 
                 </div>
@@ -81,10 +70,9 @@
                     <!-- Blockquote -->
                     <blockquote class="section_quote__blockquote">
                         <p class="text-center">
-                            Идеальный инструмент для ресторанов , кафе , магазинов и других типов бизнеса, чтобы
-                            предоставить своим клиентам привлекательное QR-меню
+                            {% trans 'Ideal tool for restaurants, cafes, bars and other types of businesses to provide your customers with an attractive QR price list' %}
                             <footer class="text-center">
-                                Dmytro Lytvynenko
+                                QR code menu
                             </footer>
                     </blockquote>
 
@@ -99,20 +87,13 @@
                 <div class="col-md-6 align-self-center">
 
                     <p>
-                    <h3>Обновление на лету</h3>
-                    Сколько раз вы продавали блюдо или больше не предлагали специальные предложения, напечатанные в
-                    меню? Мы знаем, что обновление меню занимает много времени и дорого. Вот почему QR-код PDF идеально
-                    подходит для обновления меню в режиме реального времени. Больше не нужно говорить клиентам:
-                    «Извините, он распродан»!
+                    <h3>{% trans 'Update on the fly' %}</h3>
+                   {% trans 'How many times have you sold a dish or no longer offered specials printed in price list? We know that updating a price list is time consuming and expensive. Thats why QR code is perfect suitable for updating the sheet in real time. No need to tell clients anymore: "Sorry, its sold out!"' %}
                     </p>
 
-
                     <p>
-                    <h3>Привлекайте внимание изображениями</h3>
-                    Большинство ресторанов не добавляют изображения в свое меню, потому что печать высококачественных
-                    изображений на бумаге стоит денег. Но с помощью QR-кода PDF вы можете загрузить свое цифровое меню с
-                    аппетитными изображениями, чтобы клиенты были довольны. Кроме того, они могут увидеть и принять
-                    решение на основе изображений, которые они видят, чтобы упростить процесс заказа.
+                    <h3>{% trans 'Grab attention with images' %}</h3>
+                    {% trans 'Most do not add images to their price list because high-quality printing images on paper cost money. But with the QR code you can download your digital price list from mouth-watering images to keep customers happy. Moreover, they can see and accept solution based on the images they see to streamline the ordering process.' %}
                     </p>
 
                 </div>
@@ -120,7 +101,7 @@
 
                     <!-- Image -->
                     <div class="section_discover__img">
-                        <img src="{% static 'assets/img/2.jpg' %}" class="img-fluid" alt="...">
+                        <img src="{% static 'about1.jpeg' %}" class="img-fluid" alt="...">
                     </div>
 
                 </div>
@@ -137,13 +118,12 @@
 
                     <!-- Heading -->
                     <h2 class="section__heading text-center">
-                        Behind the scenes
+                        {% trans 'Behind the scenes' %}
                     </h2>
 
                     <!-- Subheading -->
                     <p class="section__subheading text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia obcaecati sit odio velit culpa
-                        aspernatur consectetur natus quidem minima veritatis.
+                        {% trans 'Our team is working to stop using paper in the creation of price lists in the future. Thus, help nature.' %}
                     </p>
 
                 </div>
@@ -161,13 +141,10 @@
 
                     <div class="section_info__body">
                         <p class="lead text-heading">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident sequi ratione, accusamus
-                            quo mollitia architecto, explicabo obcaecati.
+                            {% trans 'Our team is working to ensure that you can provide a price list of your services at any time regardless of location and accessible by QR code' %}
                         </p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum enim saepe aperiam eius,
-                            quam blanditiis necessitatibus dolorem dignissimos pariatur quas velit nihil tempora, libero
-                            unde molestiae! Illum, inventore. Iusto, autem!
+                            {% trans 'If you have any questions related to the operation of the service, you can contact us.' %}
                         </p>
                         <br>
                         <p>

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'mainapp.apps.MainappConfig'
 ]
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -65,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static'
             ],
         },
     },
@@ -140,18 +143,18 @@ else:
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STRIPE_PUBLISHABLE_KEY = ''
-STRIPE_SECRET_KEY = ''
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51GbmsaCZH71k5EXHbiIiBnC2v4fgEVRPVcUEws04XjY15B9j6VjjQPCApy9crYutLZwywOJIHFpbsJObgHvm0QA500Ui8lkcIi'
+STRIPE_SECRET_KEY = 'sk_test_51GbmsaCZH71k5EXHiLDARbLu9f1NGKY0KuwCs5N2Mb8uz48t26Cy9BLciNWGWTYLbjptHa6d02TjAY8rCM9zSR7z004TdKyeav'
 
 SITE_ID = 1
 
-STRIPE_PRICE_ID = ''
-STRIPE_PRICE_ID2 = ''
+STRIPE_PRICE_ID = 'price_1I5pbtCZH71k5EXHbkhGB6Dz'
+STRIPE_PRICE_ID2 = 'price_1I4qzpCZH71k5EXHNjX8asN5'
 
-STRIPE_ENDPOINT_SECRET = ''
+STRIPE_ENDPOINT_SECRET = 'whsec_17ZYEV4KWSTp8SItk1Ywy4wQb5Nk082S'
 
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = "dima.litvinenko.dev@gmail.com"
+EMAIL_HOST_PASSWORD = '3453453001kK'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

@@ -13,15 +13,16 @@
     <link rel="shortcut icon" href="{% static 'assets/ico/favicon.ico' %}">
     <meta name="msapplication-config" content="{% static 'assets/ico/browserconfig.xml' %}">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/lightbox/css/lightbox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/flickity/flickity.min.css' %}">
 
     <title>{% block title %}
 
     {% endblock %}</title>
 
     <!-- CSS Plugins -->
-    <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/plugins/lightbox/css/lightbox.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/plugins/flickity/flickity.min.css' %}">
+
 
     <!-- CSS Global -->
     <!-- build:css assets/css/theme.min.css -->
@@ -35,7 +36,11 @@
     <div class="container">
 
         <!-- Navbar: Brand -->
-        <a class="navbar-brand d-lg-none" href="{% url 'index' %}">QR code menu</a>
+        <a class="navbar-brand d-lg-none" href="{% url 'index' %}">{% if customer.company_name %}
+                    {{ customer.company_name }}
+                {% else %}
+                    QR code menu
+                {% endif %}</a>
 
         <!-- Navbar: Toggler -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -61,7 +66,11 @@
 
             <!-- Navbar: Brand -->
             <a class="navbar-brand d-none d-lg-flex" href="{% url 'index' %}">
-                QR code menu
+                {% if customer.company_name %}
+                    {{ customer.company_name }}
+                {% else %}
+                    QR code menu
+                {% endif %}
             </a>
 
             <!-- Navbar navigation: Right -->
