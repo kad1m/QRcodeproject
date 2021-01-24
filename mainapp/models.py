@@ -21,10 +21,10 @@ class Customer(models.Model):
     qr_code = models.ImageField(upload_to='qr_code', blank=True)
     menu_pdf = models.FileField(upload_to='menu', blank=True)
     stripeCustomerId = models.CharField(max_length=255, blank=True)
+    order_id = models.CharField(max_length=255, blank=True)
     stripeSubscriptionId = models.CharField(max_length=255, blank=True)
     profile_image = models.ImageField(upload_to='profile', blank=True)
     currency_symbol = models.ForeignKey(Currency, on_delete=models.SET_NULL, null=True)
-
 
     def __str__(self):
         return str(self.company_name)

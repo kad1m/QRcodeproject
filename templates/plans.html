@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
-{% load static i18n %}
-
+{% load i18n static %}
 {% block title %}
-    {% trans 'Payments' %}
+    Plans
 {% endblock %}
-
 {% block content %}
-
     <section class="section section_header" data-parallax="scroll"
              data-image-src="https://source.unsplash.com/5AMSZcgN_cM/1920x1080">
         <div class="container">
@@ -22,25 +19,7 @@
             </div> <!-- / .row -->
         </div> <!-- / .container -->
     </section>
-
-    <main class="container">
-
-        {% if subscription.status == "active" %}
-            <h4>{% trans 'Your subscription' %}:</h4>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">
-                        {{ product.description }}<br>
-                        {{ subscription_end }}
-                    </p>
-                </div>
-            </div>
-            <a href="{% url 'cancel_subscription' %}">{% trans 'Cancel subscription' %}</a>
-        {% else %}
-            <div class="row row-cols-1 row-cols-md-2 mb-2 text-center" style="margin-top: 20px;">
-
-
+ <div class="row row-cols-1 row-cols-md-2 mb-2 text-center" style="margin-top: 20px;">
                 <div class="col">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
@@ -53,13 +32,7 @@
                                 <li>24/7 {% trans 'Access to the price list' %}</li>
                                 <li>{% trans 'Help center access' %}</li>
                             </ul>
-                            <form method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
-                                <input type="hidden" name="data" value="{{ data }}"/>
-                                <input type="hidden" name="signature" value="{{ signature }}"/>
-                                <button  class="w-100 btn btn-lg btn-primary"
-                                        id="">{% trans 'Get started' %}
-                                </button>
-                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -75,24 +48,10 @@
                                 <li>24/7 {% trans 'Access to the price list' %}</li>
                                 <li>{% trans 'Help center access' %}</li>
                             </ul>
-                            <form method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
-                                <input type="hidden" name="data" value="{{ data1 }}"/>
-                                <input type="hidden" name="signature" value="{{ signature1 }}"/>
-                                <button class="w-100 btn btn-lg btn-primary"
-                                        id="">{% trans 'Get started' %}
-                                </button>
-                            </form>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <p class="text-center">Нажимая {% trans 'Get started' %} Вы соглашаетесь с <a href="{% url 'privacy' %}">условиями пользования</a></p>
-        {% endif %}
-
-    </main>
-
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="{% static 'stripe/stripe-logic.js' %}"></script>
-
+    </div>
 {% endblock %}
-

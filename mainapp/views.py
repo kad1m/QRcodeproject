@@ -19,6 +19,11 @@ from datetime import datetime
 from django.core.mail import send_mail
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+from django.utils.decorators import method_decorator
+from liqpay import LiqPay
+
+import urllib3
+urllib3.disable_warnings()
 
 class Index(View):
     def get(self, request):
@@ -73,28 +78,25 @@ def createQRcode(request):
 class SecondPage(View):
     @csrf_exempt
     def get(self, request, *args, **kwargs):
-        object = get_object_or_404(Customer, id=kwargs['id'])
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        if object.stripeSubscriptionId:
-            subscription = stripe.Subscription.retrieve(object.stripeSubscriptionId)
+        customer = get_object_or_404(Customer, id=kwargs['id'])
+        #stripe.api_key = settings.STRIPE_SECRET_KEY
+        if customer.order_id:
+            #subscription = stripe.Subscription.retrieve(customer.stripeSubscriptionId)
+            products = Product.objects.filter(owner=customer)
 
-        else:
-            return render(request, 'oops.html', {})
-
-        if subscription.status == 'active':
-            products = Product.objects.filter(owner=object)
-
-            categories = Category.objects.filter(owner=object)
+            categories = Category.objects.filter(owner=customer)
 
             context = {
                 'products': products,
                 'categories': categories,
-                'customer': object,
+                'customer': customer,
             }
             return render(request, 'sp.html', context)
-
         else:
             return render(request, 'oops.html', {})
+
+        # if subscription.status == 'active':
+
 
 
 class AddCategory(View):
@@ -325,28 +327,62 @@ def profile(request):
 
 @login_required
 def home(request):
-    try:
-        # Retrieve the subscription & product
-        stripe_customer = Customer.objects.get(user=request.user)
+        customer = Customer.objects.get(user=request.user)
+        liqpay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
+        params = {
+            "action": "subscribe",
+            "subscribe_date_start": datetime.now().strftime('%Y-%m-%d %X'),
+            "subscribe_periodicity": "month",
+            "amount": "10",
+            "currency": "USD",
+            "description": "Monthly subsription",
+            "version": "3",
+            'info': customer.id,
+            "sandbox": 0, # sandbox mode, set to 1 to enable it
+            'result_url': "https://dull-hound-87.loca.lt/success",
+            "server_url": "https://dull-hound-87.loca.lt/pay-callback/", # url to callback view
+        }
+        signature = liqpay.cnb_signature(params)
+        data = liqpay.cnb_data(params)
 
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
-
-        product = stripe.Product.retrieve(subscription.plan.product)
-
-
-        # Feel free to fetch any additional data from 'subscription' or 'product'
-        # https://stripe.com/docs/api/subscriptions/object
-        # https://stripe.com/docs/api/products/object
-
-        return render(request, 'home.html', {
-            'subscription': subscription,
-            'product': product,
-            'subscription_end': datetime.fromtimestamp(subscription.current_period_end)
-        })
-    except:
-        print('no user')
-        return render(request, 'home.html')
+        params1 = {
+            "action": "subscribe",
+            "subscribe_date_start": datetime.now().strftime('%Y-%m-%d %X'),
+            "subscribe_periodicity": "year",
+            "amount": "100",
+            "currency": "USD",
+            "description": "Yearly subsription",
+            "version": "3",
+            'info': customer.id,
+            "sandbox": 0,  # sandbox mode, set to 1 to enable it
+            'result_url': "https://dull-hound-87.loca.lt/success",
+            "server_url": "https://dull-hound-87.loca.lt/pay-callback/",  # url to callback view
+        }
+        signature1 = liqpay.cnb_signature(params1)
+        data1 = liqpay.cnb_data(params1)
+        return render(request, 'home.html', {'signature': signature, 'data': data, 'data1': data1, 'signature1': signature1})
+    # try:
+    #     # Retrieve the subscription & product
+    #     stripe_customer = Customer.objects.get(user=request.user)
+    #
+    #     stripe.api_key = settings.STRIPE_SECRET_KEY
+    #     subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+    #
+    #     product = stripe.Product.retrieve(subscription.plan.product)
+    #
+    #
+    #     # Feel free to fetch any additional data from 'subscription' or 'product'
+    #     # https://stripe.com/docs/api/subscriptions/object
+    #     # https://stripe.com/docs/api/products/object
+    #
+    #     return render(request, 'home.html', {
+    #         'subscription': subscription,
+    #         'product': product,
+    #         'subscription_end': datetime.fromtimestamp(subscription.current_period_end)
+    #     })
+    # except:
+    #     print('no user')
+    #     return render(request, 'home.html')
 
 
 @csrf_exempt
@@ -408,7 +444,7 @@ def create_checkout_session1(request):
 @login_required
 def success(request):
     object = Customer.objects.get(user_id=int(request.user.id))
-    link2 = settings.ALLOWED_HOSTS[0] + object.get_absolute_url()
+    link2 = 'https://' + settings.ALLOWED_HOSTS[0] + object.get_absolute_url()
     qrcode_image = qrcode.make(link2)
     canvas = Image.new('RGB', (qrcode_image.pixel_size, qrcode_image.pixel_size), 'white')
     draw = ImageDraw.Draw(canvas)
@@ -472,16 +508,25 @@ def stripe_webhook(request):
 @login_required()
 def cancel_subscription(request):
     if request.user.is_authenticated:
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        customer = Customer.objects.get(user=request.user.id)
-        res = stripe.Subscription.delete(customer.stripeSubscriptionId)
-        if res.status == 'canceled':
-            customer.stripeCustomerId = ''
-            customer.stripeSubscriptionId = ''
-            customer.save()
-            return render(request, 'cancel.html')
-        else:
-            return HttpResponse('oops')
+        liqpay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
+        customer = Customer.objects.get(user=request.user)
+        res = liqpay.api("request", {
+            "action": "unsubscribe",
+            "version": "3",
+            "order_id": str(customer.order_id),
+            "info": customer.id
+        })
+        return render(request, 'cancel.html')
+        # stripe.api_key = settings.STRIPE_SECRET_KEY
+        # customer = Customer.objects.get(user=request.user.id)
+        # res = stripe.Subscription.delete(customer.stripeSubscriptionId)
+        # if res.status == 'canceled':
+        #     customer.stripeCustomerId = ''
+        #     customer.stripeSubscriptionId = ''
+        #     customer.save()
+        #     return render(request, 'cancel.html')
+        # else:
+        #     return HttpResponse('oops')
     else:
         return redirect('login')
 
@@ -525,6 +570,7 @@ def how_it_work(request):
 def example_menu(request):
     return render(request, 'example_menu.html')
 
+
 def comming_soon(request):
     return render(request, 'comming_soon.html')
 
@@ -533,7 +579,7 @@ class DownloadQR(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             customer = Customer.objects.get(user=request.user.id)
-            if customer.stripeSubscriptionId:
+            if customer.order_id:
                 file = open(customer.qr_code.path, 'rb')
                 response = FileResponse(file, content_type='application/force-download')
                 return response
@@ -541,6 +587,7 @@ class DownloadQR(View):
                 return redirect('home')
         else:
             return redirect('login')
+
 
 class EditCustomer(View):
     def get(self, request, *args, **kwargs):
@@ -565,3 +612,34 @@ class EditCustomer(View):
             return redirect('login')
 
 
+@method_decorator(csrf_exempt, name='dispatch')
+class PayCallbackView(View):
+    def post(self, request, *args, **kwargs):
+        liqpay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
+        data = request.POST.get('data')
+        signature = request.POST.get('signature')
+        sign = liqpay.str_to_sign(settings.LIQPAY_PRIVATE_KEY + data + settings.LIQPAY_PRIVATE_KEY)
+        if sign == signature:
+            print('callback is valid')
+        response = liqpay.decode_data_from_str(data)
+        customer = Customer.objects.get(id=int(response['info']))
+        if response['status'] == 'unsubscribed':
+            customer.order_id = ''
+            customer.save()
+            print('callback data', response)
+            return HttpResponse(status=200)
+        elif response['status'] == 'subscribed':
+            customer.order_id = response['order_id']
+            print('callback data', response)
+            customer.save()
+            return HttpResponse(status=200)
+        print('callback data', response)
+        return HttpResponse(status=200)
+
+
+def privacy(request):
+    return render(request, 'privicy.html')
+
+
+def plans(request):
+    return render(request, 'plans.html')

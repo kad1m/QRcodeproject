@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import Index, SecondPage, AddCategory, EditCustomer, comming_soon, createQRcode, DownloadQR, EditProduct, DeleteCategory, DeleteProduct, how_it_work, about_us, contact_us, CategoryView,profile, ProductView, MenuView, AddProduct, EditCategory, CategoryDetail, Register, home, stripe_config, create_checkout_session, cancel_subscription,example_menu, create_checkout_session1, success, cancel, stripe_webhook
+from django.conf.urls import url
+from .views import PayCallbackView, Index, privacy, plans, SecondPage, AddCategory, EditCustomer, comming_soon, createQRcode, DownloadQR, EditProduct, DeleteCategory, DeleteProduct, how_it_work, about_us, contact_us, CategoryView,profile, ProductView, MenuView, AddProduct, EditCategory, CategoryDetail, Register, home, stripe_config, create_checkout_session, cancel_subscription,example_menu, create_checkout_session1, success, cancel, stripe_webhook
 
 urlpatterns = [
     path('', Index.as_view(), name='index'),
@@ -24,6 +25,8 @@ urlpatterns = [
     path('create-checkout-session1/', create_checkout_session1),
     path('success', success),  # new
     path('cancel/', cancel),
+    path('privacy/', privacy, name='privacy'),
+    path('plans/', plans, name='plans'),
     path('webhook/', stripe_webhook),
     path('cancel-sub/', cancel_subscription, name='cancel_subscription'),
     path('about-us/', about_us, name='about_us'),
@@ -32,5 +35,7 @@ urlpatterns = [
     path('download/', DownloadQR.as_view(), name='download'),
     path('example-menu/', example_menu, name='example_menu'),
     path('comming-soon/', comming_soon, name='comming_soon'),
+    url(r'^pay-callback/$', PayCallbackView.as_view(), name='pay_callback'),
+
 
 ]

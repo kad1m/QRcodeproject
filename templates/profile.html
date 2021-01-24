@@ -30,7 +30,7 @@
                 <div class="card " style="margin-top: 20px; margin-bottom: 20px">
                     <div class="row no-gutters">
 
-                        {% if subscription.status == "active" %}
+                        {% if customer.order_id %}
                             {% if customer.qr_code %}
                                 <img src="{{ customer.qr_code.url }}" class="card-img" alt="...">
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-19 20:49+0200\n"
+"POT-Creation-Date: 2021-01-24 17:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,15 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: QrCodeMenu/settings.py:111
+#: QrCodeMenu/settings.py:113
 msgid "English"
 msgstr ""
 
-#: QrCodeMenu/settings.py:112
+#: QrCodeMenu/settings.py:114
 msgid "Russia"
 msgstr ""
 
-#: QrCodeMenu/settings.py:113
+#: QrCodeMenu/settings.py:115
 msgid "Ukraine"
 msgstr ""
 
@@ -261,7 +261,7 @@ msgstr "Новости & События"
 msgid "How its work"
 msgstr "Как это работает"
 
-#: templates/base.html:63 templates/base.html:184 templates/example_menu.html:4
+#: templates/base.html:63 templates/base.html:190 templates/example_menu.html:4
 #: templates/example_menu.html:16
 msgid "Example menu"
 msgstr "Пример меню"
@@ -321,7 +321,15 @@ msgstr "Контактна информация"
 msgid "Kharkiv, Ukraine, 61000"
 msgstr "Харьков, Украина, 61000"
 
-#: templates/base.html:177
+#: templates/base.html:160
+msgid "Privacy"
+msgstr "Условия пользования"
+
+#: templates/base.html:163 templates/home.html:18 templates/plans.html:15
+msgid "Pricing"
+msgstr "Выберите план"
+
+#: templates/base.html:183
 msgid "Change language"
 msgstr "Сменить язык"
 
@@ -428,10 +436,6 @@ msgstr ""
 msgid "Drinks"
 msgstr ""
 
-#: templates/home.html:18
-msgid "Pricing"
-msgstr "Выберите план"
-
 #: templates/home.html:29
 msgid "Your subscription"
 msgstr "Ваша подписка"
@@ -440,27 +444,30 @@ msgstr "Ваша подписка"
 msgid "Cancel subscription"
 msgstr "Отменить подписку"
 
-#: templates/home.html:47
+#: templates/home.html:47 templates/plans.html:26
 msgid "Monthly"
 msgstr "Ежемесячно"
 
-#: templates/home.html:52 templates/home.html:69
+#: templates/home.html:52 templates/home.html:74 templates/plans.html:31
+#: templates/plans.html:47
 msgid "Access to the price list by QR code"
 msgstr "Доступ к прайс-листу по QR коду"
 
-#: templates/home.html:53 templates/home.html:70
+#: templates/home.html:53 templates/home.html:75 templates/plans.html:32
+#: templates/plans.html:48
 msgid "Access to the price list"
 msgstr "Доступ к прайсл-листу"
 
-#: templates/home.html:54 templates/home.html:71
+#: templates/home.html:54 templates/home.html:76 templates/plans.html:33
+#: templates/plans.html:49
 msgid "Help center access"
 msgstr "Служба поддержки"
 
-#: templates/home.html:56 templates/home.html:73
+#: templates/home.html:60 templates/home.html:82 templates/home.html:89
 msgid "Get started"
 msgstr "Создать"
 
-#: templates/home.html:64
+#: templates/home.html:69 templates/plans.html:42
 msgid "Yearly"
 msgstr "Ежегодично"
 

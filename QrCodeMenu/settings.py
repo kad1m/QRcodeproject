@@ -26,7 +26,7 @@ SECRET_KEY = 'le98v%gp(*z$0_!xag-$^zui*k_7&1_6ma^(e2hc$2kb**_lwb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -158,3 +158,6 @@ EMAIL_HOST_USER = ""
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+LIQPAY_PUBLIC_KEY = ''
+LIQPAY_PRIVATE_KEY = ''
